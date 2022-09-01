@@ -1,12 +1,13 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_instagram/providers/log_provider.dart';
 import 'package:social_instagram/utils/prefs_key.dart';
 
+import '../providers/bloc_provider.dart';
+
 enum AppState { loading, unAuthorized, authorized }
 
-abstract class AppStateBloc implements BlocBase {
+class AppStateBloc implements BlocBase {
   final _appState = BehaviorSubject<AppState>.seeded(AppState.loading);
 
   Stream<AppState> get appState => _appState.stream;
@@ -25,7 +26,9 @@ abstract class AppStateBloc implements BlocBase {
 
   Future<void> launchApp() async {
     final prefs = await SharedPreferences.getInstance();
-    final authorLevel = prefs.getInt(PrefsKey.authorLevel);
+    final authorLevel = prefs.getInt(PrefsKey.authorLevel) ?? 0;
+    logger.log('authorLevel $authorLevel');
+    //langCode = prefs.getString('langCode') ?? 'vi';
 
     switch (authorLevel) {
       case 2:
@@ -38,7 +41,7 @@ abstract class AppStateBloc implements BlocBase {
 
   Future<void> changeAppState(AppState state) async {
     final prefs = await SharedPreferences.getInstance();
-    final authorLevel = prefs.setInt(PrefsKey.authorLevel, state.index);
+    await prefs.setInt(PrefsKey.authorLevel, state.index);
     logger.log('changeAppState $state');
 
     _appState.sink.add(state);
