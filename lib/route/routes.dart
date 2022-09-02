@@ -7,7 +7,10 @@ class Routes {
     switch (settings.name) {
       case '/':
         {
-          return _buildRoute(settings, ListPostsPage());
+          return _buildRoute(
+            settings,
+            ListPostsPage(),
+          );
         }
       default:
         return _errorRoute();
