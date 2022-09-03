@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/authentication/pages/welcome_page.dart';
-import 'package:social_instagram/modules/posts/pages/list_posts_page.dart';
+import 'package:social_instagram/modules/dashboard/pages/dashboard_page.dart';
+import 'package:social_instagram/route/route_name.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/':
+      case RouteName.dashboardPage:
         {
           return _buildRoute(
             settings,
-            ListPostsPage(),
+            DashboardPage(),
           );
         }
       default:
@@ -19,7 +20,7 @@ class Routes {
 
   static Route unAuthorizedRoute(RouteSettings settings) {
     switch (settings.name) {
-      case '/':
+      case RouteName.welcomePage:
         return _buildRoute(
           settings,
           // const LoginPage()
