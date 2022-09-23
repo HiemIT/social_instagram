@@ -20,7 +20,7 @@ class Routes {
 
   static Route unAuthorizedRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteName.welcomePage:
+      case '/':
         return _buildRoute(
           settings,
           // const LoginPage()

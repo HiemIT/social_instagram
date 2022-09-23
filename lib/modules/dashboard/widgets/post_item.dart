@@ -1,30 +1,31 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:social_instagram/modules/posts/models/post.dart';
+import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 
 class PostItem extends StatefulWidget {
-  final double height;
-  final String url;
-  final String description;
+  final double? height;
+  final Post? item;
+  final String? description;
 
   const PostItem({
     Key? key,
-    required this.height,
-    required this.url,
+    this.height,
+    required this.item,
     required this.description,
   }) : super(key: key);
 
   @override
-  _PostItemState createState() => _PostItemState();
+  State<PostItem> createState() => _PostItemState();
 }
 
 class _PostItemState extends State<PostItem> {
-  late double _height;
-  late String _url;
+  late double? _height;
+  late Post? _item;
 
   @override
   void initState() {
     _height = widget.height;
-    _url = widget.url;
+    _item = widget.item;
     super.initState();
   }
 
@@ -38,34 +39,19 @@ class _PostItemState extends State<PostItem> {
         borderRadius: BorderRadius.circular(8),
         color: const Color(0xFF242A37),
         boxShadow: const [
-          BoxShadow(
-            color: Colors.black,
-            blurRadius: 4,
-            offset: Offset(3, 6),
-          )
+          BoxShadow(color: Colors.black, blurRadius: 4, offset: Offset(3, 6))
         ],
       ),
       child: Column(
         children: [
-          //infor Widget
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 12),
             child: Text(
-              widget.description,
+              widget.description ?? '',
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
-          Expanded(
-            child: CachedNetworkImage(
-              width: double.infinity,
-              imageUrl: _url,
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-              fit: BoxFit.cover,
-              alignment: Alignment.topCenter,
-            ),
-          ),
+          GridImage(photos: _item?.photos ?? [])
         ],
       ),
     );
