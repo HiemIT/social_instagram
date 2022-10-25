@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/authentication/pages/welcome_page.dart';
 import 'package:social_instagram/modules/dashboard/pages/dashboard_page.dart';
+import 'package:social_instagram/modules/posts/pages/create_post_page.dart';
 import 'package:social_instagram/route/route_name.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouteName.dashboardPage:
+        print('RouteName.dashboardPage');
         {
           return _buildRoute(
             settings,
             DashboardPage(),
+          );
+        }
+      case RouteName.createPostPage:
+        {
+          return _buildRoute(
+            settings,
+            CreatePostPage(),
           );
         }
       default:

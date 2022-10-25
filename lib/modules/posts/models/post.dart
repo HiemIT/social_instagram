@@ -5,92 +5,91 @@ class Post {
   String? id;
   int? status;
   String? createdAt;
-  // String? updatedAt;
-  // String? title;
+  String? updatedAt;
+  String? title;
   String? description;
-  // int? commentCounts;
+  int? commentCounts;
   List<Picture>? images;
-  // int? likeCounts;
-  // int? viewCounts;
-  // int? pulseScore;
-  // bool? isSensitive;
-  // bool? isPrivate;
-  // User? user;
+  int? likeCounts;
+  int? viewCounts;
+  int? pulseScore;
+  bool? isSensitive;
+  bool? isPrivate;
+  User? user;
   List<Photo>? photos;
-  // bool? liked;
+  bool? liked;
 
-  Post({
-    this.id,
-    this.status,
-    this.createdAt,
-    // this.updatedAt,
-    // this.title,
-    this.description,
-    // this.commentCounts,
-    this.images,
-    // this.likeCounts,
-    // this.viewCounts,
-    // this.pulseScore,
-    // this.isSensitive,
-    // this.isPrivate,
-    // this.user,
-    this.photos,
-    // this.liked
-  });
+  Post(
+      {this.id,
+      this.status,
+      this.createdAt,
+      this.updatedAt,
+      this.title,
+      this.description,
+      this.commentCounts,
+      this.images,
+      this.likeCounts,
+      this.viewCounts,
+      this.pulseScore,
+      this.isSensitive,
+      this.isPrivate,
+      this.user,
+      this.photos,
+      this.liked});
 
   Post.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     status = json['status'];
     createdAt = json['created_at'];
-    // updatedAt = json['updated_at'];
-    // title = json['title'];
+    updatedAt = json['updated_at'];
+    title = json['title'];
     description = json['description'];
-    // commentCounts = json['comment_counts'];
+    commentCounts = json['comment_counts'];
     if (json['images'] != null) {
       images = <Picture>[];
       json['images'].forEach((v) {
         images!.add(new Picture.fromJson(v));
       });
     }
-    // likeCounts = json['like_counts'];
-    // viewCounts = json['view_counts'];
-    // pulseScore = json['pulse_score'];
-    // isSensitive = json['is_sensitive'];
-    // isPrivate = json['is_private'];
-    // user = json['user'] != null ? new User.fromJson(json['user']) : null;
+    likeCounts = json['like_counts'];
+    viewCounts = json['view_counts'];
+    pulseScore = json['pulse_score'];
+    isSensitive = json['is_sensitive'];
+    isPrivate = json['is_private'];
+    user = json['user'] != null ? new User.fromJson(json['user']) : null;
     if (json['photos'] != null) {
       photos = <Photo>[];
       json['photos'].forEach((v) {
         photos!.add(new Photo.fromJson(v));
       });
     }
-    // liked = json['liked'];
+    liked = json['liked'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['status'] = this.status;
-    // data['created_at'] = this.createdAt;
-    // data['updated_at'] = this.updatedAt;
-    // data['title'] = this.title;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    data['title'] = this.title;
     data['description'] = this.description;
-    // data['comment_counts'] = this.commentCounts;
+    data['comment_counts'] = this.commentCounts;
     if (this.images != null) {
       data['images'] = this.images!.map((v) => v.toJson()).toList();
     }
-    // data['like_counts'] = this.likeCounts;
-    // data['view_counts'] = this.viewCounts;
-    // data['pulse_score'] = this.pulseScore;
-    // data['is_sensitive'] = this.isSensitive;
-    // data['is_private'] = this.isPrivate;
-    // if (this.user != null) {
-    //   data['user'] = this.user!.toJson();
-    // }
-    // if (this.photos != null) {
-    //   data['photos'] = this.photos!.map((v) => v.toJson()).toList();
-    // }
-    // data['liked'] = this.liked;
+    data['like_counts'] = this.likeCounts;
+    data['view_counts'] = this.viewCounts;
+    data['pulse_score'] = this.pulseScore;
+    data['is_sensitive'] = this.isSensitive;
+    data['is_private'] = this.isPrivate;
+    if (this.user != null) {
+      data['user'] = this.user!.toJson();
+    }
+    if (this.photos != null) {
+      data['photos'] = this.photos!.map((v) => v.toJson()).toList();
+    }
+    data['liked'] = this.liked;
     return data;
   }
 }

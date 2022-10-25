@@ -17,6 +17,11 @@ class AuthResult {
   String? errMessage;
 
   AuthResult(this.loginStatus, this.accessToken, {this.errMessage});
+
+  @override
+  String toString() {
+    return 'AuthResult{loginStatus: $loginStatus, accessToken: $accessToken, errMessage: $errMessage}';
+  }
 }
 
 abstract class AuthLogin {

@@ -6,6 +6,7 @@ import 'package:social_instagram/modules/localizations/localizations_constants.d
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/route/routes.dart';
+import 'package:social_instagram/themes/app_colors.dart';
 
 class MyApp extends StatefulWidget {
   static void setLocale(BuildContext context, Locale locale) {
@@ -81,11 +82,10 @@ class _MyAppState extends State<MyApp> {
 
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            // initialRoute: '/',
             initialRoute: RouteName.dashboardPage,
             onGenerateRoute: Routes.authorizedRoute,
             theme: ThemeData(
-              primaryColor: const Color(0xfff54b64),
+              primaryColor: AppColors.darkGray,
             ),
             key: key,
             builder: _builder,
