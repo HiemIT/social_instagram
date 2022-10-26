@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
+  // #505151
   static const redMedium = Color(0xfff54b64);
   static const tanHide = Color(0xFFF78361);
   static const blueGrey = Color(0xff8e8e93);
@@ -39,5 +40,6 @@ class AppColors {
   //     begin: Alignment.topCenter,
   //     end: Alignment.bottomCenter);
   static const orangeLight = Color(0xffF78361);
-  static const grey = Color(0xff616770);
+  // static const grey = Color(0xff616770);
+  static const grey = Color(0xFF505151);
 }
