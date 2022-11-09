@@ -4,6 +4,7 @@ import 'package:social_instagram/modules/notification/pages/notification_page.da
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_posts_page.dart';
 import 'package:social_instagram/modules/profile/pages/setting_page.dart';
+import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uidata.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -28,11 +29,13 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.blackRussian,
         currentIndex: _index,
         onTap: onTabTapped,
         iconSize: 36,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Color(0xFFF54B64),
+        selectedItemColor: AppColors.redMedium,
+        unselectedItemColor: AppColors.slate,
         items: [
           BottomNavigationBarItem(
             icon: ImageIcon(

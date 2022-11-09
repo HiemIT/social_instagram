@@ -96,8 +96,8 @@ class _UploadItemState extends State<UploadItem> {
           ),
         if (widget.showDeleteButton)
           Positioned(
-            right: -5,
-            top: -8,
+            right: -12,
+            top: -4,
             child: ButtonTheme(
               minWidth: 20,
               child: FlatButton(

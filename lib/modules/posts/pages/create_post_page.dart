@@ -130,7 +130,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
           .createPost(_desCtrl.text, _currentGroupUploadValue.uploadedIds);
 
       if (res) {
-        Navigator.pop(context);
+        Navigator.of(context).pop();
         return;
       }
     } catch (e) {
