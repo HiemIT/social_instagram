@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/posts/models/photo.dart';
 import 'package:social_instagram/modules/posts/widgets/post_img_item.dart';
+import 'package:social_instagram/modules/posts/widgets/stateless/full_photo.dart';
 import 'package:social_instagram/utils/photo_utils.dart';
 
 class GridImage extends StatelessWidget {
@@ -454,7 +455,7 @@ class GridImage extends StatelessWidget {
                   url: photos[1].url,
                   width: (width + padding) / 2,
                   height: (itemHeight - padding) / 2,
-                  onTap: () => navigateToPhotoPage(photos, 0, context),
+                  onTap: () => navigateToPhotoPage(photos, 1, context),
                 ),
               ],
             ),
@@ -465,21 +466,21 @@ class GridImage extends StatelessWidget {
                   url: photos[2].url,
                   width: (width + padding),
                   height: itemHeight,
-                  onTap: () => navigateToPhotoPage(photos, 0, context),
+                  onTap: () => navigateToPhotoPage(photos, 2, context),
                 ),
                 _buildPadding(),
                 PostImgItem(
                   url: photos[3].url,
                   width: (width + padding),
                   height: itemHeight,
-                  onTap: () => navigateToPhotoPage(photos, 0, context),
+                  onTap: () => navigateToPhotoPage(photos, 3, context),
                 ),
                 _buildPadding(),
                 PostImgItem(
                   url: photos[4].url,
                   width: (width + padding),
                   height: itemHeight,
-                  onTap: () => navigateToPhotoPage(photos, 0, context),
+                  onTap: () => navigateToPhotoPage(photos, 4, context),
                 ),
               ],
             )
@@ -499,7 +500,7 @@ class GridImage extends StatelessWidget {
               url: photos[0].url,
               width: itemWidth,
               height: itemHeight,
-              onTap: () => navigateToPhotoPage(photos, 1, context),
+              onTap: () => navigateToPhotoPage(photos, 0, context),
             ),
             _buildPadding(),
             PostImgItem(
@@ -517,21 +518,21 @@ class GridImage extends StatelessWidget {
               url: photos[2].url,
               width: itemWidth / 2,
               height: (itemHeight - padding) / 2,
-              onTap: () => navigateToPhotoPage(photos, 1, context),
+              onTap: () => navigateToPhotoPage(photos, 2, context),
             ),
             _buildPadding(),
             PostImgItem(
               url: photos[3].url,
               width: itemWidth / 2,
               height: (itemHeight - padding) / 2,
-              onTap: () => navigateToPhotoPage(photos, 1, context),
+              onTap: () => navigateToPhotoPage(photos, 3, context),
             ),
             _buildPadding(),
             PostImgItem(
               url: photos[4].url,
               width: itemWidth / 2,
               height: (itemHeight - padding) / 2,
-              onTap: () => navigateToPhotoPage(photos, 1, context),
+              onTap: () => navigateToPhotoPage(photos, 4, context),
             ),
           ],
         )
@@ -540,5 +541,13 @@ class GridImage extends StatelessWidget {
   }
 
   void navigateToPhotoPage(
-      List<Photo> photos, int index, BuildContext context) {}
+      List<Photo> photos, int index, BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => FullPhoto(url: photos[index].url),
+      ),
+    );
+    print('navigateToPhotoPage $index');
+  }
 }
