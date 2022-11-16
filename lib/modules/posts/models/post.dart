@@ -1,146 +1,116 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:social_instagram/modules/posts/models/photo.dart';
 import 'package:social_instagram/modules/posts/models/picture.dart';
 
+import '../../../models/user.dart';
+
+part 'post.g.dart';
+
+@JsonSerializable()
 class Post {
-  String? id;
-  int? status;
-  String? createdAt;
-  String? updatedAt;
-  String? title;
-  String? description;
-  int? commentCounts;
-  List<Picture>? images;
-  int? likeCounts;
-  int? viewCounts;
-  int? pulseScore;
-  bool? isSensitive;
-  bool? isPrivate;
-  User? user;
-  List<Photo>? photos;
+  @JsonKey(name: 'id', includeIfNull: false)
+  final String? id;
+
+  @JsonKey(name: 'status', includeIfNull: false)
+  final int? status;
+
+  @JsonKey(name: 'created_at', includeIfNull: false)
+  final DateTime? createdAt;
+
+  @JsonKey(name: 'title', includeIfNull: false)
+  final String? title;
+
+  @JsonKey(name: 'description', includeIfNull: false)
+  final String? description;
+
+  @JsonKey(name: 'images', includeIfNull: false)
+  final List<Picture>? images;
+
+  @JsonKey(name: 'photos', includeIfNull: false)
+  final List<Photo>? photos;
+
+  @JsonKey(name: 'comment_counts', includeIfNull: false)
+  final int? commentCounts;
+
+  @JsonKey(name: 'like_counts', includeIfNull: false)
+  final int? likeCounts;
+
+  @JsonKey(name: 'liked', includeIfNull: false)
   bool? liked;
 
-  Post(
-      {this.id,
-      this.status,
-      this.createdAt,
-      this.updatedAt,
-      this.title,
-      this.description,
-      this.commentCounts,
-      this.images,
-      this.likeCounts,
-      this.viewCounts,
-      this.pulseScore,
-      this.isSensitive,
-      this.isPrivate,
-      this.user,
-      this.photos,
-      this.liked});
+  @JsonKey(name: 'user', includeIfNull: false)
+  final User? user;
 
-  Post.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    title = json['title'];
-    description = json['description'];
-    commentCounts = json['comment_counts'];
-    if (json['images'] != null) {
-      images = <Picture>[];
-      json['images'].forEach((v) {
-        images!.add(new Picture.fromJson(v));
-      });
-    }
-    likeCounts = json['like_counts'];
-    viewCounts = json['view_counts'];
-    pulseScore = json['pulse_score'];
-    isSensitive = json['is_sensitive'];
-    isPrivate = json['is_private'];
-    user = json['user'] != null ? new User.fromJson(json['user']) : null;
-    if (json['photos'] != null) {
-      photos = <Photo>[];
-      json['photos'].forEach((v) {
-        photos!.add(new Photo.fromJson(v));
-      });
-    }
-    liked = json['liked'];
-  }
+  Post({
+    this.id,
+    this.status,
+    this.createdAt,
+    this.title,
+    this.description,
+    this.images,
+    this.photos,
+    this.commentCounts,
+    this.likeCounts,
+    this.liked,
+    this.user,
+  });
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['status'] = this.status;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    data['title'] = this.title;
-    data['description'] = this.description;
-    data['comment_counts'] = this.commentCounts;
-    if (this.images != null) {
-      data['images'] = this.images!.map((v) => v.toJson()).toList();
-    }
-    data['like_counts'] = this.likeCounts;
-    data['view_counts'] = this.viewCounts;
-    data['pulse_score'] = this.pulseScore;
-    data['is_sensitive'] = this.isSensitive;
-    data['is_private'] = this.isPrivate;
-    if (this.user != null) {
-      data['user'] = this.user!.toJson();
-    }
-    if (this.photos != null) {
-      data['photos'] = this.photos!.map((v) => v.toJson()).toList();
-    }
-    data['liked'] = this.liked;
-    return data;
-  }
+  String? get urlUserAvatar => user?.imgUrl;
+
+  String get displayName => user?.displayName ?? '';
+
+  factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PostToJson(this);
 }
 
-class User {
-  String? id;
-  String? username;
-  String? firstName;
-  String? lastName;
-  Avatar? avatar;
-  String? systemRole;
-  bool? isVerified;
-  String? createdAt;
-
-  User(
-      {this.id,
-      this.username,
-      this.firstName,
-      this.lastName,
-      this.avatar,
-      this.systemRole,
-      this.isVerified,
-      this.createdAt});
-
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    username = json['username'];
-    firstName = json['first_name'];
-    lastName = json['last_name'];
-    avatar =
-        json['avatar'] != null ? new Avatar.fromJson(json['avatar']) : null;
-    systemRole = json['system_role'];
-    isVerified = json['is_verified'];
-    createdAt = json['created_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['username'] = this.username;
-    data['first_name'] = this.firstName;
-    data['last_name'] = this.lastName;
-    if (this.avatar != null) {
-      data['avatar'] = this.avatar!.toJson();
-    }
-    data['system_role'] = this.systemRole;
-    data['is_verified'] = this.isVerified;
-    data['created_at'] = this.createdAt;
-    return data;
-  }
-}
+// class User {
+//   String? id;
+//   String? username;
+//   String? firstName;
+//   String? lastName;
+//   Avatar? avatar;
+//   String? systemRole;
+//   bool? isVerified;
+//   String? createdAt;
+//
+//   User(
+//       {this.id,
+//       this.username,
+//       this.firstName,
+//       this.lastName,
+//       this.avatar,
+//       this.systemRole,
+//       this.isVerified,
+//       this.createdAt});
+//
+//   User.fromJson(Map<String, dynamic> json) {
+//     id = json['id'];
+//     username = json['username'];
+//     firstName = json['first_name'];
+//     lastName = json['last_name'];
+//     avatar =
+//         json['avatar'] != null ? new Avatar.fromJson(json['avatar']) : null;
+//     systemRole = json['system_role'];
+//     isVerified = json['is_verified'];
+//     createdAt = json['created_at'];
+//   }
+//
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = new Map<String, dynamic>();
+//     data['id'] = this.id;
+//     data['username'] = this.username;
+//     data['first_name'] = this.firstName;
+//     data['last_name'] = this.lastName;
+//     if (this.avatar != null) {
+//       data['avatar'] = this.avatar!.toJson();
+//     }
+//     data['system_role'] = this.systemRole;
+//     data['is_verified'] = this.isVerified;
+//     data['created_at'] = this.createdAt;
+//     return data;
+//   }
+// }
 
 class Avatar {
   String? url;

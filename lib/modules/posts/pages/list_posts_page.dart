@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:social_instagram/modules/posts/blocs/list_posts_rxdart_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/stateless/activity_indicator.dart';
 import 'package:social_instagram/modules/posts/widgets/stateless/post_item_remake.dart';
@@ -40,39 +39,6 @@ class _ListPostsPageState extends State<ListPostsPage> {
     super.dispose();
   }
 
-  /*@override
-  Widget build(BuildContext context) {
-    return BlocBuilder<ListPostsBloc, ListPostsState>(
-      bloc: _postsBloc,
-      builder: (context, state) {
-        final posts = state.posts;
-        if (posts != null) {
-          return ListView.builder(
-            itemBuilder: (_, int index) {
-              final item = posts[index];
-              return PostItem(
-                height: 200,
-                url: item.images?.first.url ?? '',
-                description: item.description!,
-              );
-            },
-            itemCount: posts.length,
-          );
-        }
-
-        final error = state.error;
-        if (error != null) {
-          return Center(
-            child: Text(error.toString()),
-          );
-        }
-
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
-  }*/
   @override
   Widget build(BuildContext context) {
     return Scaffold(

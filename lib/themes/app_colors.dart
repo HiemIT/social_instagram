@@ -34,12 +34,13 @@ class AppColors {
   static const textLogin = Color(0xffff2d55);
   static const blackOpa50 = Color.fromRGBO(0, 0, 0, 0.5);
   static const redGoogle = Color(0xffd93025);
+
   // static const redMedium_tanHide_gradient = LinearGradient(colors: [redMedium, tanHide]);
   // static const gradient_tanHide_redMedium = LinearGradient(
   //     colors: [tanHide, redMedium],
   //     begin: Alignment.topCenter,
   //     end: Alignment.bottomCenter);
   static const orangeLight = Color(0xffF78361);
-  // static const grey = Color(0xff616770);
-  static const grey = Color(0xFF505151);
+  static const grey = Color(0xff616770);
+// static const grey = Color(0xFF505151);
 }

@@ -1,56 +1,152 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../themes/app_colors.dart';
+import 'package:social_instagram/themes/app_colors.dart';
 
 class ItemRow extends StatelessWidget {
   const ItemRow({
     Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.avatarUrl,
+    this.avatarUrl,
+    this.sizeAvatar = 36,
+    this.title,
+    this.subtitle,
+    this.avatarWidget,
+    this.bodyWidget,
+    this.rightWidget,
+    this.onTap,
   }) : super(key: key);
 
-  final String avatarUrl;
-  final String title;
-  final String subtitle;
+  final String? avatarUrl;
+  final double sizeAvatar;
+  final String? title;
+  final String? subtitle;
+
+  final Widget? avatarWidget;
+  final Widget? bodyWidget;
+  final Widget? rightWidget;
+
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
-        CircleAvatar(
-          radius: 20,
-          backgroundImage: NetworkImage(
-            avatarUrl,
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              buildAvatar(context),
+              const SizedBox(width: 8),
+              buildBodyWidget(context),
+            ],
           ),
         ),
-        const SizedBox(
-          width: 10,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.bold,
-              ).copyWith(
-                color: AppColors.white,
-              ),
-            ),
-            Text(
-              subtitle,
-              style: TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w300,
-              ).copyWith(
-                color: AppColors.slate,
-              ),
-            ),
-          ],
-        ),
+        rightWidget ?? const SizedBox(),
       ],
+    );
+  }
+
+  Widget buildAvatar(BuildContext context) {
+    Widget? built = avatarWidget;
+
+    if (built == null && avatarUrl != null) {
+      built = CircleAvatarBorder(avatarUrl: avatarUrl, size: sizeAvatar);
+    }
+
+    if (built != null && onTap != null) {
+      built = GestureDetector(child: built, onTap: onTap);
+    }
+
+    return built ?? const SizedBox.shrink();
+  }
+
+  Widget buildBodyWidget(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        buildTitle(context),
+        buildSubtitle(context),
+      ],
+    );
+  }
+
+  Widget buildTitle(BuildContext context) {
+    Widget? built;
+
+    if (title != null) {
+      built = Text(
+        title!,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: Theme.of(context).textTheme.subtitle1!.copyWith(
+              color: Colors.white,
+            ),
+      );
+    }
+
+    if (built != null && onTap != null) {
+      built = GestureDetector(child: built, onTap: onTap);
+    }
+
+    if (built != null) {
+      built = Flexible(child: built);
+    }
+
+    return built ?? const SizedBox.shrink();
+  }
+
+  Widget buildSubtitle(BuildContext context) {
+    if (subtitle == null) {
+      return const SizedBox();
+    }
+    return Container(
+      margin: const EdgeInsets.only(top: 2),
+      child: Text(
+        subtitle!,
+        style: Theme.of(context)
+            .textTheme
+            .bodyText2!
+            .copyWith(color: Colors.white70),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+}
+
+class CircleAvatarBorder extends StatelessWidget {
+  final String? avatarUrl;
+  final double size;
+
+  const CircleAvatarBorder({Key? key, this.avatarUrl, this.size = 32})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: size,
+      height: size,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(size / 2),
+        child: CachedNetworkImage(
+          imageUrl: avatarUrl!,
+          errorWidget: (ctx, str, obj) => Container(
+            child: Icon(
+              Icons.person,
+              size: size - 10,
+              color: AppColors.white,
+            ),
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.lightBlueGrey,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -1,44 +1,44 @@
+import 'package:json_annotation/json_annotation.dart';
+
+import '../../../utils/photo_utils.dart';
+
+part 'picture.g.dart';
+
+@JsonSerializable()
 class Picture {
-  String? id;
-  String? url;
-  int? orgWidth;
-  int? orgHeight;
-  String? orgUrl;
-  String? cloudName;
-  String? dominantColor;
-  int? fileSize;
+  @JsonKey(name: 'url', includeIfNull: false)
+  final String? url;
+
+  @JsonKey(name: 'org_width', includeIfNull: false)
+  final int? orgWidth;
+
+  @JsonKey(name: 'org_height', includeIfNull: false)
+  final int? orgHeight;
+
+  @JsonKey(name: 'org_url', includeIfNull: false)
+  final String? orgUrl;
+
+  @JsonKey(name: 'cloud_name', includeIfNull: false)
+  final String? cloudName;
+
+  String cloudUrl([int w = 100, int h = 100]) {
+    final userAvtUrl = url ?? '';
+    if (userAvtUrl.startsWith('https://dofhunt.imgix.net')) {
+      return PhotoUtils.genImgIx(userAvtUrl, w, h, focusFace: true);
+    }
+
+    if (userAvtUrl.startsWith('https://graph.facebook.com')) {
+      return PhotoUtils.genFbImg(userAvtUrl, 100, 100);
+    }
+
+    return userAvtUrl;
+  }
 
   Picture(
-      {this.id,
-      this.url,
-      this.orgWidth,
-      this.orgHeight,
-      this.orgUrl,
-      this.cloudName,
-      this.dominantColor,
-      this.fileSize});
+      {this.url, this.orgWidth, this.orgHeight, this.orgUrl, this.cloudName});
 
-  Picture.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    url = json['url'];
-    orgWidth = json['org_width'];
-    orgHeight = json['org_height'];
-    orgUrl = json['org_url'];
-    cloudName = json['cloud_name'];
-    dominantColor = json['dominant_color'];
-    fileSize = json['file_size'];
-  }
+  factory Picture.fromJson(Map<String, dynamic> json) =>
+      _$PictureFromJson(json);
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['url'] = this.url;
-    data['org_width'] = this.orgWidth;
-    data['org_height'] = this.orgHeight;
-    data['org_url'] = this.orgUrl;
-    data['cloud_name'] = this.cloudName;
-    data['dominant_color'] = this.dominantColor;
-    data['file_size'] = this.fileSize;
-    return data;
-  }
+  Map<String, dynamic> toJson() => _$PictureToJson(this);
 }

@@ -249,12 +249,14 @@ class GridImage extends StatelessWidget {
                   height: (itemHeight - padding) / 2,
                   onTap: () => navigateToPhotoPage(photos, 1, context),
                 ),
+                _buildPadding(),
                 PostImgItem(
                   url: photo[2].url,
                   width: itemWidth / 2,
                   height: (itemHeight - padding) / 2,
                   onTap: () => navigateToPhotoPage(photos, 2, context),
                 ),
+                _buildPadding(),
                 PostImgItem(
                   url: photo[3].url,
                   width: itemWidth / 2,
