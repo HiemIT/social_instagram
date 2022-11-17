@@ -24,19 +24,27 @@ class _FullPhotoState extends State<FullPhoto> {
         itemCount: widget.photos.length,
         builder: (BuildContext context, int index) {
           return PhotoViewGalleryPageOptions(
+            key: ValueKey(widget.photos[index].id),
             imageProvider: CachedNetworkImageProvider(
               widget.photos[index].url,
             ),
+            onTapDown: (context, details, controllerValue) {
+              Navigator.pop(context);
+            },
+            onScaleEnd: (context, details, controllerValue) {
+              Navigator.pop(context);
+            },
             initialScale: PhotoViewComputedScale.contained,
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 2,
+            basePosition: Alignment.center,
           );
         },
+        pageController: PageController(initialPage: _currentIndex),
         scrollPhysics: const BouncingScrollPhysics(),
         backgroundDecoration: const BoxDecoration(
           color: Colors.black,
         ),
-        pageController: PageController(initialPage: widget.id),
         onPageChanged: (index) {
           setState(() {
             _currentIndex = index;

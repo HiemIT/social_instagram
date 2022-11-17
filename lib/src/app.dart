@@ -4,7 +4,6 @@ import 'package:social_instagram/modules/authentication/bloc/authentication_bloc
 import 'package:social_instagram/modules/authentication/wrapper/service/app_auth_service.dart';
 import 'package:social_instagram/modules/localizations/localizations_constants.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
-import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/route/routes.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 
@@ -82,7 +81,7 @@ class _MyAppState extends State<MyApp> {
 
           return MaterialApp(
             debugShowCheckedModeBanner: false,
-            initialRoute: RouteName.dashboardPage,
+            initialRoute: '/',
             onGenerateRoute: Routes.authorizedRoute,
             theme: ThemeData(
               primaryColor: AppColors.darkGray,

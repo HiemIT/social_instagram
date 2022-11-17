@@ -33,7 +33,8 @@ class _ListCommentState extends State<ListComment> {
                   child: CupertinoActivityIndicator(),
                 ),
                 Center(
-                  child: Text('Loading...'),
+                  child: Text('Loading...',
+                      style: TextStyle(color: AppColors.grey)),
                 ),
               ],
             ),
@@ -81,9 +82,8 @@ class _ListCommentState extends State<ListComment> {
                 padding: EdgeInsets.only(right: 8.0),
                 child: CupertinoActivityIndicator(),
               ),
-              Text(
-                "Loading...",
-              ),
+              Text("Loading...",
+                  style: TextStyle(fontSize: 16.0, color: AppColors.grey)),
             ],
           ),
         );

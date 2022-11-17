@@ -13,7 +13,7 @@ import 'package:social_instagram/route/route_name.dart';
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouteName.dashboardPage:
+      case '/':
         print('RouteName.dashboardPage');
         {
           return _buildRoute(

@@ -6,6 +6,7 @@ import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
+import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';
 
 import '../../comment/widgets/list_comment.dart';
@@ -45,7 +46,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: AppColors.dark,
       body: StreamBuilder<Post>(
           stream: bloc!.postsStream,
           initialData: widget.post,
@@ -57,12 +58,13 @@ class _PostDetailPageState extends State<PostDetailPage> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   slivers: [
                     SliverAppBar(
+                      backgroundColor: AppColors.darkGray,
                       centerTitle: true,
                       title: Text(
                           '${post?.user?.firstName} ${post?.user?.lastName}'),
                       snap: true,
                       floating: true,
-                      elevation: 1,
+                      elevation: 0,
                       forceElevated: true,
                       leading: IconButton(
                         icon: Icon(Icons.arrow_back),

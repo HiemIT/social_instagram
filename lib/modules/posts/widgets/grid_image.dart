@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/posts/models/photo.dart';
 import 'package:social_instagram/modules/posts/widgets/post_img_item.dart';
-import 'package:social_instagram/modules/posts/widgets/stateless/full_photo.dart';
+import 'package:social_instagram/modules/posts/widgets/statefull/full_photo.dart';
 import 'package:social_instagram/utils/photo_utils.dart';
 
 class GridImage extends StatelessWidget {
