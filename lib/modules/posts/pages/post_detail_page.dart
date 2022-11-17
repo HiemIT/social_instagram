@@ -89,7 +89,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                           ),
                           if (post!.photos != null)
                             GridImage(
-                              photos: post!.photos!,
+                              photos: post.photos!,
                               padding: 0,
                             ),
                           ActionPost(

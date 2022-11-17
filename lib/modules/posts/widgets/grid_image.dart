@@ -283,7 +283,7 @@ class GridImage extends StatelessWidget {
             url: photo[0].url,
             width: width,
             height: itemHeight,
-            onTap: () => navigateToPhotoPage(photos, 3, context),
+            onTap: () => navigateToPhotoPage(photos, 0, context),
           ),
           _buildPadding(),
           Row(
@@ -545,7 +545,10 @@ class GridImage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => FullPhoto(url: photos[index].url),
+        builder: (context) => FullPhoto(
+          photos: photos,
+          id: index,
+        ),
       ),
     );
     print('navigateToPhotoPage $index');
