@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:social_instagram/themes/app_text_style.dart';
 
-class ItemBloc extends StatelessWidget {
-  const ItemBloc(
+class ItemBlock extends StatelessWidget {
+  const ItemBlock(
       {Key? key,
       required this.leading,
       required this.title,
@@ -13,7 +14,7 @@ class ItemBloc extends StatelessWidget {
   final Widget title;
   final Widget? trailing;
   final GestureTapCallback? onTap;
-  final Widget? subtitle;
+  final String? subtitle;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,7 +23,6 @@ class ItemBloc extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
             child: Row(
               children: [
                 leading,
@@ -39,12 +39,14 @@ class ItemBloc extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 if (subtitle != null) ...[
-                  subtitle!,
-                  const SizedBox(
-                    width: 10,
+                  Text(
+                    subtitle!,
+                    style: AppTextStyle.datimepost,
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.end,
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: 8,
                   ),
                 ],
                 if (trailing != null) trailing!,

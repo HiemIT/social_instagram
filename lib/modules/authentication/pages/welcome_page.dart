@@ -111,8 +111,8 @@ class _WelcomePageState extends State<WelcomePage> {
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.white,
-                                  onPrimary: Colors.grey,
+                                  foregroundColor: Colors.grey,
+                                  backgroundColor: Colors.white,
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(22),
@@ -135,7 +135,7 @@ class _WelcomePageState extends State<WelcomePage> {
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Color(0xffF78361),
+                                  backgroundColor: Color(0xffF78361),
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(22),

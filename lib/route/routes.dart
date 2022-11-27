@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_instagram/models/user.dart';
 import 'package:social_instagram/modules/authentication/pages/welcome_page.dart';
 import 'package:social_instagram/modules/comment/blocs/comments_bloc.dart';
 import 'package:social_instagram/modules/dashboard/pages/dashboard_page.dart';
@@ -7,8 +8,12 @@ import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/pages/create_post_page.dart';
 import 'package:social_instagram/modules/posts/pages/post_detail_page.dart';
+import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
+import 'package:social_instagram/modules/profile/pages/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
+
+import '../modules/notification/blocs/list_notifications_rxdart_bloc.dart';
 
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
@@ -19,8 +24,11 @@ class Routes {
           return _buildRoute(
             settings,
             BlocProvider(
-              bloc: ListPostsRxDartBloc()..getPosts(),
-              child: const DashboardPage(),
+              bloc: ListNotificationRxdartBloc()..getNotifications(),
+              child: BlocProvider(
+                bloc: ListPostsRxDartBloc()..getPosts(),
+                child: const DashboardPage(),
+              ),
             ),
           );
         }
@@ -31,6 +39,18 @@ class Routes {
             CreatePostPage(),
           );
         }
+      case RouteName.profilePage:
+        final user = settings.arguments;
+        if (user is User) {
+          return _buildRoute(
+            settings,
+            BlocProvider(
+              bloc: ProfileBloc()..getProfile(),
+              child: ProfilePage(user: user),
+            ),
+          );
+        }
+        return _errorRoute();
       case RouteName.postDetailPage:
         // settings.arguments là một đối tượng để truyền vào một đối tượng từ một trang khác vào trang này (đối tượng này có thể là một đối tượng bất kỳ)
         final post = settings.arguments;

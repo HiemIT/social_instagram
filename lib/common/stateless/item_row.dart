@@ -13,13 +13,14 @@ class ItemRow extends StatelessWidget {
     this.bodyWidget,
     this.rightWidget,
     this.onTap,
+    this.maxLines = 1,
   }) : super(key: key);
 
   final String? avatarUrl;
   final double sizeAvatar;
   final String? title;
   final String? subtitle;
-
+  final int maxLines;
   final Widget? avatarWidget;
   final Widget? bodyWidget;
   final Widget? rightWidget;
@@ -77,13 +78,16 @@ class ItemRow extends StatelessWidget {
     Widget? built;
 
     if (title != null) {
-      built = Text(
-        title!,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-        style: Theme.of(context).textTheme.subtitle1!.copyWith(
-              color: Colors.white,
-            ),
+      built = SizedBox(
+        width: MediaQuery.of(context).size.width - 108,
+        child: Text(
+          title!,
+          maxLines: maxLines,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context).textTheme.subtitle1!.copyWith(
+                color: Colors.white,
+              ),
+        ),
       );
     }
 
@@ -109,9 +113,10 @@ class ItemRow extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .bodyText2!
-            .copyWith(color: Colors.white70),
+            .copyWith(color: AppColors.slate),
         maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+        overflow: TextOverflow.clip,
+        softWrap: false,
       ),
     );
   }
