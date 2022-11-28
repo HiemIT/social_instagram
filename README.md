@@ -50,5 +50,4 @@ The application uses Dofhunt API to post photos, view photos, search login with 
   - [Setting](#setting)
   - [User](#user)
 
-### **Posts**
  
