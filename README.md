@@ -1,16 +1,54 @@
-# social_instagram
+# Social Photographer App
 
-A new Flutter project.
 
-## Getting Started
+## Introduction
+The application uses Dofhunt API to post photos, view photos, search login with gmail, facebook in this app uses google login. 
+- [Video demo](https://www.youtube.com/)
 
-This project is a starting point for a Flutter application.
+## Contents
+   - [Features](#features)
+   - [Setups](#setups)
+   - [Screens](#screens)
+   - [Library and technology](#library-and-technology)
+ 
+## **Features**
+- Posts: 
+    * List posts
+      * like
+      * unlike
+      * countLike
+      * countComment
+    * Detail photo
+    * Comment
+    * Like 
+- Search 
+    * User
+- Notification
+    * user like posts
+    * user comment posts
+- Login to the app using Google
+    * View profile 
+    * Edit profile
+    * Photos users posts
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## **Setups**
+- Clone repository:
+  ```
+  $ git clone https://github.com/HiemIT/social_instagram
+- Run command directory project social_instagram: 
+  ```
+  $ flutter pub get
+- Then open the development tool and run the application on the virtual machine.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+
+## **Screens**
+  - [Posts](#posts)
+  - [Notification](#notification)
+  - [Search](#search)
+  - [Setting](#setting)
+  - [User](#user)
+
+### **Posts**
+ 
