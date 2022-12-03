@@ -6,9 +6,9 @@ import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/themes/app_text_style.dart';
 
 class CurrentUserWidget extends StatelessWidget {
-  const CurrentUserWidget({Key? key, required this.user}) : super(key: key);
+  const CurrentUserWidget({Key? key, this.user}) : super(key: key);
 
-  final User user;
+  final User? user;
 
   @override
   Widget build(BuildContext context) {

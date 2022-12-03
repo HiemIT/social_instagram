@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:social_instagram/common/stateless/item_row.dart';
 import 'package:social_instagram/modules/comment/blocs/comments_bloc.dart';
 import 'package:social_instagram/modules/comment/models/comment.dart';
+import 'package:social_instagram/modules/posts/widgets/statefull/reaction_comment.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 
@@ -103,11 +104,19 @@ class CommentItemBubble extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
-          child: ItemRow(
-            avatarUrl: comment!.urlUserAvatar,
-            title: "${comment!.displayName}",
-            subtitle: '${comment!.content}',
-            sizeAvatar: 32,
+          child: Column(
+            children: [
+              ItemRow(
+                avatarUrl: comment!.urlUserAvatar,
+                title: "${comment!.displayName}",
+                subtitle: '${comment!.content}',
+                sizeAvatar: 32,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              ReactionComment(comment: comment!),
+            ],
           ),
         ),
       ],

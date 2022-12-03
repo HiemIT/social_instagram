@@ -5,7 +5,7 @@ import 'package:social_instagram/providers/api_provider.dart';
 class PostDetailRepo {
   final apiProvider = ApiProvider();
 
-  Future<Post?> getPostDetail(String postId) async {
+  Future<Post?> getPost(String postId) async {
     try {
       final response = await apiProvider.get('/posts/$postId');
 

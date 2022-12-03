@@ -1,11 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_instagram/modules/posts/blocs/like_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/toggle.dart';
 import 'package:social_instagram/themes/app_colors.dart';
+import 'package:social_instagram/utils/model_type.dart';
+
+import '../../repos/like_repo.dart';
 
 class ActionPost extends StatefulWidget {
   final Post post;
+
   const ActionPost({Key? key, required this.post}) : super(key: key);
 
   @override
@@ -14,17 +19,27 @@ class ActionPost extends StatefulWidget {
 
 class _ActionPostState extends State<ActionPost> {
   Post get post => widget.post;
+  int likeCount = 0;
   bool isLiked = false;
+
+  int get commentCount => post.commentCounts ?? 0;
+
+  // int get likeCount => post.likeCounts ?? 0;
+
+  final likeBloc = LikeBloc(LikeRepo(ModelType.post));
 
   @override
   void initState() {
     super.initState();
+
+    likeCount = post.likeCounts ?? 0;
     isLiked = post.liked ?? false;
   }
 
   @override
   void didUpdateWidget(covariant ActionPost oldWidget) {
     if (widget.post != oldWidget.post) {
+      likeCount = widget.post.likeCounts ?? 0;
       isLiked = widget.post.liked ?? false;
     }
     super.didUpdateWidget(oldWidget);
@@ -36,7 +51,7 @@ class _ActionPostState extends State<ActionPost> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (post.description != null && post.description!.isNotEmpty)
+          if (post.description != null && post.description!.trim().isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(left: 12, top: 8),
               child: Text(
@@ -80,10 +95,16 @@ class _ActionPostState extends State<ActionPost> {
                               color: AppColors.redGoogle,
                             ),
                           ),
-                          onTrigger: (isLiked) async {},
+                          onTrigger: (isLiked) async {
+                            !isLiked
+                                ? likeBloc.unlike(post.id!)
+                                : likeBloc.like(post.id!);
+                          },
                           onTap: (isOn) async {
                             setState(
                               () {
+                                likeCount =
+                                    isOn ? likeCount + 1 : likeCount - 1;
                                 isLiked = isOn;
                               },
                             );
@@ -91,7 +112,7 @@ class _ActionPostState extends State<ActionPost> {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          formatCount(post.likeCounts ?? 0),
+                          formatCount(likeCount),
                           style: const TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -106,7 +127,7 @@ class _ActionPostState extends State<ActionPost> {
                       const IconPostComment(),
                       const SizedBox(width: 4),
                       Text(
-                        formatCount(post.commentCounts ?? 0),
+                        formatCount(commentCount),
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 15,

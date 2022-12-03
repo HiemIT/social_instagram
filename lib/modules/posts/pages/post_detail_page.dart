@@ -5,6 +5,7 @@ import 'package:social_instagram/modules/comment/blocs/comments_bloc.dart';
 import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
+import 'package:social_instagram/modules/posts/widgets/statefull/build_comment_box.dart';
 import 'package:social_instagram/modules/profile/pages/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_colors.dart';
@@ -31,12 +32,13 @@ class _PostDetailPageState extends State<PostDetailPage> {
   PostDetailBloc? get bloc => BlocProvider.of<PostDetailBloc>(context);
 
   CommentBloc? get commentBloc => BlocProvider.of<CommentBloc>(context);
+  TextEditingController commentsTEC = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     commentBloc!.getComments();
-    bloc?.getPostDetail();
+    bloc?.getPost();
   }
 
   @override
@@ -49,71 +51,70 @@ class _PostDetailPageState extends State<PostDetailPage> {
     return Scaffold(
       backgroundColor: AppColors.dark,
       body: StreamBuilder<Post>(
-          stream: bloc!.postsStream,
-          initialData: widget.post,
-          builder: (context, snapshot) {
-            final post = snapshot.data;
-            return Stack(
-              children: [
-                CustomScrollView(
-                  physics: const AlwaysScrollableScrollPhysics(),
-                  slivers: [
-                    SliverAppBar(
-                      backgroundColor: AppColors.darkGray,
-                      centerTitle: true,
-                      title: Text(
-                          '${post?.user?.firstName} ${post?.user?.lastName}'),
-                      snap: true,
-                      floating: true,
-                      elevation: 0,
-                      forceElevated: true,
-                      leading: IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        onPressed: () => Navigator.of(context).pop(),
-                      ),
+        stream: bloc!.postsStream,
+        initialData: widget.post,
+        builder: (context, snapshot) {
+          final post = snapshot.data;
+          return Stack(
+            children: [
+              CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                slivers: <Widget>[
+                  SliverAppBar(
+                    backgroundColor: AppColors.darkGray,
+                    centerTitle: true,
+                    title: Text('${post?.user?.displayName}'),
+                    snap: true,
+                    floating: true,
+                    elevation: 1,
+                    forceElevated: true,
+                    leading: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      onPressed: () => Navigator.of(context).pop(),
                     ),
-                    CupertinoSliverRefreshControl(
-                      onRefresh: () async {
-                        await Future.delayed(const Duration(seconds: 2));
-                      },
-                    ),
-                    SliverList(
-                      delegate: SliverChildListDelegate(
-                        [
-                          InkWell(
-                            onTap: () =>
-                                navigateToProfilePage(context, post!.user),
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(12, 12, 12, 8),
-                              child: ItemRow(
-                                title:
-                                    '${post?.user?.firstName} ${post?.user?.lastName}',
-                                subtitle: StringUtils()
-                                    .formatTimeAgo(post?.createdAt as DateTime),
-                                avatarUrl: post?.user?.avatar?.url ?? '',
-                              ),
+                  ),
+                  CupertinoSliverRefreshControl(
+                    onRefresh: bloc!.getPost,
+                  ),
+                  SliverList(
+                    delegate: SliverChildListDelegate(
+                      [
+                        InkWell(
+                          onTap: () =>
+                              navigateToProfilePage(context, post!.user),
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(12, 12, 12, 8),
+                            child: ItemRow(
+                              title:
+                                  '${post?.user?.firstName} ${post?.user?.lastName}',
+                              subtitle: StringUtils()
+                                  .formatTimeAgo(post?.createdAt as DateTime),
+                              avatarUrl: post?.user?.avatar?.url ?? '',
                             ),
                           ),
-                          if (post!.photos != null)
-                            GridImage(
-                              photos: post.photos!,
-                              padding: 0,
-                            ),
-                          ActionPost(
-                            post: post,
+                        ),
+                        if (post!.photos != null)
+                          GridImage(
+                            photos: post.photos!,
+                            padding: 0,
                           ),
-                          const Divider(
-                            thickness: 1,
-                          ),
-                          const ListComment(),
-                        ],
-                      ),
-                    )
-                  ],
-                ),
-              ],
-            );
-          }),
+                        ActionPost(
+                          post: post,
+                        ),
+                        const Divider(
+                          thickness: 1,
+                        ),
+                        const ListComment(),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ],
+          );
+        },
+      ),
+      bottomNavigationBar: BuildCommentBox(),
     );
   }
 }

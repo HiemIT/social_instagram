@@ -15,9 +15,9 @@ class PostDetailBloc extends BlocBase {
   // PostDetailBloc(this._postId) truyền vào _postId để có thể lấy dữ liệu từ API
   PostDetailBloc(this._postId);
 
-  Future<void> getPostDetail() async {
+  Future<void> getPost() async {
     try {
-      final response = await PostDetailRepo().getPostDetail(_postId);
+      final response = await PostDetailRepo().getPost(_postId);
 
       //   check res có null khônh
       if (response != null) {

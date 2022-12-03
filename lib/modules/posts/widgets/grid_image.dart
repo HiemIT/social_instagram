@@ -110,7 +110,7 @@ class GridImage extends StatelessWidget {
               url: photos[1].url,
               width: width,
               height: height / 2,
-              onTap: () => navigateToPhotoPage(photos, 0, context),
+              onTap: () => navigateToPhotoPage(photos, 1, context),
             ),
           ],
         ),
@@ -132,7 +132,7 @@ class GridImage extends StatelessWidget {
           url: photos[1].url,
           width: width / 2,
           height: height,
-          onTap: () => navigateToPhotoPage(photos, 0, context),
+          onTap: () => navigateToPhotoPage(photos, 1, context),
         ),
       ],
     );

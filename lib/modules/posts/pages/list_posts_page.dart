@@ -97,7 +97,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                     padding: EdgeInsets.all(5),
                     decoration: ShapeDecoration(
                       shape: CircleBorder(),
-                      color: AppColors.tanHide,
+                      color: AppColors.redSend,
                       shadows: [
                         BoxShadow(
                           color: AppColors.darkGray,
@@ -127,7 +127,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                   if (snapshot.hasError) {
                     return SliverFillRemaining(
                       child: Center(
-                        child: Text(snapshot.hasError.toString()),
+                        child: Text('Something went wrong'),
                       ),
                     );
                   }

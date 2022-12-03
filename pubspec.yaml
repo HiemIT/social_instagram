@@ -42,6 +42,8 @@ dependencies:
   multi_image_picker2: ^5.0.2
   rxdart: ^0.27.2
   dio: ^4.0.6
+  intl: ^0.17.0
+  comment_box: ^0.0.18
   # Google Icon
   font_awesome_flutter: ^9.0.0
   awesome_snackbar_content: ^0.0.9

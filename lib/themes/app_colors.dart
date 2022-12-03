@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   // #505151
+  static const secondary = Color(0xff20242F);
   static const redMedium = Color(0xfff54b64);
   static const tanHide = Color(0xFFF78361);
   static const blueGrey = Color(0xff8e8e93);
@@ -34,6 +35,7 @@ class AppColors {
   static const textLogin = Color(0xffff2d55);
   static const blackOpa50 = Color.fromRGBO(0, 0, 0, 0.5);
   static const redGoogle = Color(0xffd93025);
+  static const redSend = Color(0xffF54B64);
 
   // static const redMedium_tanHide_gradient = LinearGradient(colors: [redMedium, tanHide]);
   // static const gradient_tanHide_redMedium = LinearGradient(

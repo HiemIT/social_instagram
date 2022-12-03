@@ -40,5 +40,7 @@ class ListCommentsBloc extends BlocBase {
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    _listCmtCtrl.close();
+  }
 }
