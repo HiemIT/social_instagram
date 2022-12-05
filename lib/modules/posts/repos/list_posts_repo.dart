@@ -1,9 +1,9 @@
-import 'package:social_instagram/resource/api_provider.dart';
-
+import '../../../providers/api_provider.dart';
 import '../models/post.dart';
 
 class ListPostsRepo {
   final apiProvider = ApiProvider();
+
   // Future<List<Post>?> getPosts() async {
   //   try {
   //     final res = await Dio(

@@ -37,9 +37,18 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
   Stream<List<Post>?> get postsStream => dataStream;
 
   late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
+  late final StreamSubscription<BlocEvent> _subDeletePost;
   final ListPostPagingRepo _repo;
 
   ListPostsRxDartBloc() : _repo = ListPostPagingRepo() {
+    _subDeletePost = AppEventBloc().listenEvent(
+      eventName: EventName.deletePost,
+      handler: _deletePost,
+    );
+    AppEventBloc().listenEvent(
+      eventName: EventName.deletePost,
+      handler: _deletePost,
+    );
     _onLikeAndUnLikePostSub:
     AppEventBloc().listenManyEvents(
       listEventName: [
@@ -58,6 +67,17 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     debugPrint('_onLikeAndUnlikePost ${event.name}');
 
     final oldPosts = dataValue ?? [];
+  }
+
+  void _deletePost(BlocEvent evt) {
+    final value = evt.value;
+// print('_deletePost $value');
+    if (value is String) {
+      // value <=> id post
+      dataSubject.sink
+          .add(dataValue!.where((e) => e.id != value).toList()); // C1
+      // C2: call api refresh list post
+    }
   }
 
   @override

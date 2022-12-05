@@ -1,5 +1,6 @@
 import 'package:social_instagram/modules/notification/models/notify.dart';
-import 'package:social_instagram/resource/api_provider.dart';
+
+import '../../../providers/api_provider.dart';
 
 class ListNotificationRepo {
   final apiProvider = ApiProvider();

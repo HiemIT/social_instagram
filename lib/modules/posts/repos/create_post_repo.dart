@@ -1,4 +1,4 @@
-import 'package:social_instagram/resource/api_provider.dart';
+import '../../../providers/api_provider.dart';
 
 class CreatePostRepo {
   final _apiProvider = ApiProvider();

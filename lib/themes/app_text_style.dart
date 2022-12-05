@@ -15,7 +15,7 @@ class AppTextStyle {
   static const nameUser = TextStyle(
       fontSize: 17, color: Color(0xffFFFFFF), fontWeight: FontWeight.w700);
   static const datimepost = TextStyle(
-      fontSize: 12, color: Colors.white70, fontWeight: FontWeight.w500);
+      fontSize: 12, color: Colors.white70, fontWeight: FontWeight.w300);
   static const caption =
       TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.w500);
 }

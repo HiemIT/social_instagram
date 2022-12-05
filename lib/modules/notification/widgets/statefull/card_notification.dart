@@ -17,7 +17,9 @@ class CardNotification extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: GestureDetector(
         child: Card(
-          color: isRead == 1 ? Theme.of(context).primaryColor : AppColors.slate,
+          color: isRead == 1
+              ? Theme.of(context).primaryColor
+              : AppColors.softBlue.withOpacity(0.1),
           elevation: 0,
           margin: const EdgeInsets.symmetric(horizontal: 8),
           shape: RoundedRectangleBorder(

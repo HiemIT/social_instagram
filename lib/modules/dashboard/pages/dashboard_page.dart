@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/notification/pages/notification_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
-import 'package:social_instagram/modules/posts/pages/list_posts_page.dart';
-import 'package:social_instagram/modules/posts/repos/list_post_paging_repo.dart';
 import 'package:social_instagram/modules/profile/pages/setting_page.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uidata.dart';
@@ -16,8 +14,8 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   final List<Widget> _children = [
-    const ListPostsPage(),
-    ListPostPagingPage(),
+    // const ListPostsPage(),
+    const ListPostPagingPage(),
     const NotificationPage(),
     const SettingPage(),
   ];
@@ -42,12 +40,12 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             label: "Home",
           ),
-          BottomNavigationBarItem(
-            icon: ImageIcon(
-              AssetImage(UIData.iconStream),
-            ),
-            label: "Home 2",
-          ),
+          // BottomNavigationBarItem(
+          //   icon: ImageIcon(
+          //     AssetImage(UIData.iconStream),
+          //   ),
+          //   label: "Home 2",
+          // ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage(UIData.iconNotifications),

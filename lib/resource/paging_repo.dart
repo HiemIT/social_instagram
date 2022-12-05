@@ -1,5 +1,6 @@
 import 'package:social_instagram/models/paging.dart';
-import 'package:social_instagram/resource/api_provider.dart';
+
+import '../../../providers/api_provider.dart';
 
 abstract class PagingRepo<T> {
   final _apiProvider = ApiProvider();

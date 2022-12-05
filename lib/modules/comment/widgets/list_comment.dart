@@ -46,7 +46,7 @@ class _ListCommentState extends State<ListComment> {
             return Container(
               padding: EdgeInsets.only(top: 12.0),
               child: Center(
-                child: Text('No comments',
+                child: Text('No comments yet',
                     style: TextStyle(fontSize: 16.0, color: AppColors.grey)),
               ),
             );
@@ -110,7 +110,9 @@ class CommentItemBubble extends StatelessWidget {
                 avatarUrl: comment!.urlUserAvatar,
                 title: "${comment!.displayName}",
                 subtitle: '${comment!.content}',
+                maxLines: 1,
                 sizeAvatar: 32,
+                isCmt: true,
               ),
               SizedBox(
                 height: 10,

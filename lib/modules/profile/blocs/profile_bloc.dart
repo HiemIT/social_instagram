@@ -10,10 +10,11 @@ class ProfileBloc extends BlocBase {
   //  khai báo stream để lắng nghe dữ liệu
   Stream<User?> get profileStream => _profileCtrl.stream;
 
-  Future<void> getProfile() async {
+  Future<User> getProfile() async {
     try {
       final res = await ProfileRepo().getProfile();
       _profileCtrl.sink.add(res);
+      return res;
     } catch (e) {
       rethrow;
     }

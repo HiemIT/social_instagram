@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 
+import '../stateful/expanded_text_widget.dart';
+
 class ItemRow extends StatelessWidget {
   const ItemRow({
     Key? key,
@@ -14,6 +16,7 @@ class ItemRow extends StatelessWidget {
     this.rightWidget,
     this.onTap,
     this.maxLines = 1,
+    this.isCmt = false,
   }) : super(key: key);
 
   final String? avatarUrl;
@@ -24,6 +27,7 @@ class ItemRow extends StatelessWidget {
   final Widget? avatarWidget;
   final Widget? bodyWidget;
   final Widget? rightWidget;
+  final bool isCmt;
 
   final VoidCallback? onTap;
 
@@ -35,7 +39,7 @@ class ItemRow extends StatelessWidget {
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
               buildAvatar(context),
@@ -69,7 +73,10 @@ class ItemRow extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         buildTitle(context),
-        buildSubtitle(context),
+        ExpandedTextWidget(
+          isCmt: isCmt,
+          text: subtitle!,
+        ),
       ],
     );
   }
@@ -106,17 +113,48 @@ class ItemRow extends StatelessWidget {
     if (subtitle == null) {
       return const SizedBox();
     }
+    if (!isCmt) {
+      return Container(
+        margin: const EdgeInsets.only(top: 2),
+        child: Text(
+          subtitle!,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText2!
+              .copyWith(color: AppColors.slate),
+          maxLines: 1,
+          overflow: TextOverflow.clip,
+          softWrap: false,
+        ),
+      );
+    }
+
     return Container(
       margin: const EdgeInsets.only(top: 2),
-      child: Text(
-        subtitle!,
-        style: Theme.of(context)
-            .textTheme
-            .bodyText2!
-            .copyWith(color: AppColors.slate),
-        maxLines: 1,
-        overflow: TextOverflow.clip,
-        softWrap: false,
+      child: Container(
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width * 0.80,
+        ),
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: AppColors.transparent,
+          borderRadius: BorderRadius.circular(15),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: AppColors.grey.withOpacity(0.5),
+          //     spreadRadius: 2,
+          //     blurRadius: 5,
+          //   ),
+          // ],
+        ),
+        child: Text(
+          subtitle!,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText2!
+              .copyWith(color: AppColors.white92),
+        ),
       ),
     );
   }

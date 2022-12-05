@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_instagram/config_env.dart';
-import 'package:social_instagram/modules/posts/repos/public.dart';
 import 'package:social_instagram/providers/log_provider.dart';
 import 'package:social_instagram/resource/token_manager.dart';
 import 'package:social_instagram/src/error/error_response.dart';
@@ -17,8 +16,8 @@ class ApiProvider {
   late Dio _dio;
 
   String? get _accessToken {
-    // return TokenManager().accessToken;
-    return userToken;
+    return TokenManager().accessToken;
+    // return userToken;
   }
 
   static final ApiProvider _instance = ApiProvider._internal();
