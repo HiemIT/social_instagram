@@ -17,10 +17,12 @@ import '../models/post.dart';
 
 class PostDetailPage extends StatefulWidget {
   final Post post;
+  final String? id;
 
   const PostDetailPage({
     Key? key,
     required this.post,
+    this.id,
   }) : super(key: key);
 
   @override
@@ -89,7 +91,9 @@ class _PostDetailPageState extends State<PostDetailPage> {
                               subtitle: StringUtils()
                                   .formatTimeAgo(post?.createdAt as DateTime),
                               avatarUrl: post?.user?.avatar?.url ?? '',
-                              rightWidget: showOption(),
+                              rightWidget: widget.id == post?.user?.id
+                                  ? showOption()
+                                  : null,
                             ),
                           ),
                         ),
@@ -121,7 +125,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   Widget showOption() {
     final size = MediaQuery.of(context).size.height;
     return InkWell(
-      borderRadius: BorderRadius.circular(30),
+      borderRadius: BorderRadius.circular(60),
       onTap: () {
         showModalBottomSheet(
             context: context,
@@ -212,6 +216,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   Future<void> deletePost() async {
     try {
       return bloc!.deletePost().then((value) {
+        Navigator.pop(context);
         Navigator.pop(context);
       });
     } catch (e) {}

@@ -9,9 +9,11 @@ import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';
 
 class PostItemRemake extends StatelessWidget {
-  const PostItemRemake({Key? key, required this.post}) : super(key: key);
+  const PostItemRemake({Key? key, required this.post, this.uid})
+      : super(key: key);
 
   final Post post;
+  final String? uid;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class PostItemRemake extends StatelessWidget {
         onTap: () {
           // push to detail post
           Navigator.pushNamed(context, RouteName.postDetailPage,
-              arguments: post);
+              arguments: [post, uid]);
         },
         child: Card(
           color: AppColors.transparent,
@@ -43,8 +45,7 @@ class PostItemRemake extends StatelessWidget {
                     padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
                     child: ItemRow(
                       avatarUrl: post.user!.avatar!.url!,
-                      title:
-                          '${post.user!.firstName! + ' ' + post.user!.lastName!}',
+                      title: '${post.user!.displayName}',
                       subtitle: StringUtils()
                           .formatTimeAgo(post.createdAt as DateTime),
                     ),

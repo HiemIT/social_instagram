@@ -44,7 +44,9 @@ class Routes {
         return _errorRoute();
       case RouteName.postDetailPage:
         // settings.arguments là một đối tượng để truyền vào một đối tượng từ một trang khác vào trang này (đối tượng này có thể là một đối tượng bất kỳ)
-        final post = settings.arguments;
+        List? arguments = settings.arguments as List;
+        Post? post = arguments[0] as Post?;
+        String uid = arguments[1];
         if (post is Post) {
           return _buildRoute(
             settings,
@@ -52,7 +54,7 @@ class Routes {
               bloc: PostDetailBloc(post.id!),
               child: BlocProvider(
                 bloc: CommentBloc(post.id!),
-                child: PostDetailPage(post: post),
+                child: PostDetailPage(post: post, id: uid),
               ),
             ),
           );

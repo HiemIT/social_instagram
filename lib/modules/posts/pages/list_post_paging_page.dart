@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
 
 import '../../../common/mixin/scroll_page_mixin.dart';
 import '../../../route/route_name.dart';
@@ -20,15 +21,25 @@ class ListPostPagingPage extends StatefulWidget {
 class _ListPostsPagingPageState extends State<ListPostPagingPage>
     with ScrollPageMixin {
   final _postsBloc = ListPostsRxDartBloc();
+  final _profileBloc = ProfileBloc();
   late final _scrollCtrl = ScrollController();
   final _controller = TextEditingController();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
+  String? uid;
 
   @override
   void initState() {
-    super.initState();
     _postsBloc.getPosts();
+    currentUser();
+    super.initState();
+  }
+
+  Future<void> currentUser() async {
+    final idAd = await _profileBloc.getProfile().then((value) => value.id!);
+    setState(() {
+      uid = idAd;
+    });
   }
 
   @override
@@ -39,6 +50,7 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
 
   @override
   Widget build(BuildContext context) {
+    print("UID $uid");
     return Scaffold(
       backgroundColor: AppColors.dark,
       body: RefreshIndicator(
@@ -134,7 +146,10 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final post = snapshot.data![index];
-                        return PostItemRemake(post: post);
+                        return PostItemRemake(
+                          post: post,
+                          uid: uid!,
+                        );
                       },
                       childCount: snapshot.data?.length ?? 0,
                     ),
