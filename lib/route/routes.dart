@@ -12,6 +12,8 @@ import 'package:social_instagram/modules/profile/pages/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 
+import '../modules/posts/blocs/list_posts_rxdart_bloc.dart';
+
 class Routes {
   static Route authorizedRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -19,7 +21,10 @@ class Routes {
         {
           return _buildRoute(
             settings,
-            const DashboardPage(),
+            BlocProvider(
+              bloc: ListPostsRxDartBloc()..getPosts(),
+              child: const DashboardPage(),
+            ),
           );
         }
         return _errorRoute();

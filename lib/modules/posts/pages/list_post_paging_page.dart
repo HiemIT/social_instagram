@@ -30,9 +30,9 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
 
   @override
   void initState() {
-    _postsBloc.getPosts();
-    currentUser();
     super.initState();
+    currentUser();
+    _postsBloc.getPosts();
   }
 
   Future<void> currentUser() async {

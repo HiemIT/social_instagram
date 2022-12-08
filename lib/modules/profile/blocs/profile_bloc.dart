@@ -7,7 +7,7 @@ class ProfileBloc extends BlocBase {
   // behavior subject is a stream controller
   final _profileCtrl = BehaviorSubject<User?>();
 
-  //  khai báo stream để lắng nghe dữ liệu
+  // TODO khai báo stream để lắng nghe dữ liệu
   Stream<User?> get profileStream => _profileCtrl.stream;
 
   Future<User> getProfile() async {

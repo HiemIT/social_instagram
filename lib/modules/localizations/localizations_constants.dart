@@ -34,6 +34,6 @@ Locale _locale(String languageCode) {
 }
 
 Future<Locale> getLocale() async {
-  String languageCode = await shareds.getLanguageCode() ?? VIETNAMESE;
+  String languageCode = await shareds.getLanguageCode();
   return _locale(languageCode);
 }

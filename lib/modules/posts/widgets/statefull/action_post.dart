@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:social_instagram/common/blocs/app_even_bloc.dart';
 import 'package:social_instagram/modules/posts/blocs/like_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/toggle.dart';
@@ -95,12 +96,8 @@ class _ActionPostState extends State<ActionPost> {
                               color: AppColors.redGoogle,
                             ),
                           ),
-                          onTrigger: (isLiked) async {
-                            !isLiked
-                                ? likeBloc.unlike(post.id!)
-                                : likeBloc.like(post.id!);
-                          },
-                          onTap: (isOn) async {
+                          onTrigger: _handleLikePost,
+                          onTap: (isOn) {
                             setState(
                               () {
                                 likeCount =
@@ -142,6 +139,15 @@ class _ActionPostState extends State<ActionPost> {
         ],
       ),
     );
+  }
+
+  Future<void> _handleLikePost(bool isLiked) async {
+    !isLiked ? await likeBloc.unlike(post.id!) : await likeBloc.like(post.id!);
+
+    final event =
+        !isLiked ? EventName.unLikePostDetail : EventName.likePostDetail;
+
+    AppEventBloc().emitEvent(BlocEvent(event, post.id));
   }
 }
 

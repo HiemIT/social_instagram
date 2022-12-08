@@ -19,7 +19,7 @@ class PostItemRemake extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           // push to detail post
           Navigator.pushNamed(context, RouteName.postDetailPage,

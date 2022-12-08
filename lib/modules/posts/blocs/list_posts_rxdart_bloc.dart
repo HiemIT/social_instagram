@@ -41,6 +41,13 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
   final ListPostPagingRepo _repo;
 
   ListPostsRxDartBloc() : _repo = ListPostPagingRepo() {
+    _onLikeAndUnLikePostSub = AppEventBloc().listenManyEvents(
+      listEventName: [
+        EventName.likePostDetail,
+        EventName.unLikePostDetail,
+      ],
+      handler: _onLikeAndUnlikePost,
+    );
     _subDeletePost = AppEventBloc().listenEvent(
       eventName: EventName.deletePost,
       handler: _deletePost,
@@ -49,7 +56,6 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       eventName: EventName.deletePost,
       handler: _deletePost,
     );
-    _onLikeAndUnLikePostSub:
     AppEventBloc().listenManyEvents(
       listEventName: [
         EventName.likePostDetail,
@@ -63,10 +69,30 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     return getData();
   }
 
-  void _onLikeAndUnlikePost(BlocEvent event) {
-    debugPrint('_onLikeAndUnlikePost ${event.name}');
+  void _onLikeAndUnlikePost(BlocEvent evt) {
+    debugPrint('_onLikeAndUnlikePost ${evt.name}');
 
     final oldPosts = dataValue ?? [];
+
+    final index = oldPosts.indexWhere((p) => p.id == evt.value);
+
+    if (index == -1) {
+      return;
+    }
+
+    final post = oldPosts[index];
+
+    final likeCount = post.likeCounts;
+    final eventIsLike = [EventName.likePostDetail].contains(evt.name);
+    final likeCountNew = eventIsLike ? likeCount! + 1 : likeCount! - 1;
+
+    post
+      ..likeCounts = likeCountNew
+      ..liked = eventIsLike;
+
+    oldPosts[index] = post;
+
+    dataSubject.sink.add(oldPosts.toList());
   }
 
   void _deletePost(BlocEvent evt) {
@@ -78,6 +104,12 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
           .add(dataValue!.where((e) => e.id != value).toList()); // C1
       // C2: call api refresh list post
     }
+  }
+
+  @override
+  void dispose() {
+    _subDeletePost.cancel();
+    _onLikeAndUnLikePostSub.cancel();
   }
 
   @override
