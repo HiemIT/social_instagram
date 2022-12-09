@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/notification/pages/notification_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
-import 'package:social_instagram/modules/profile/pages/setting_page.dart';
+import 'package:social_instagram/modules/setting/pages/setting_page.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uidata.dart';
 

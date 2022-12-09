@@ -25,8 +25,6 @@ class _ActionPostState extends State<ActionPost> {
 
   int get commentCount => post.commentCounts ?? 0;
 
-  // int get likeCount => post.likeCounts ?? 0;
-
   final likeBloc = LikeBloc(LikeRepo(ModelType.post));
 
   @override
@@ -39,11 +37,10 @@ class _ActionPostState extends State<ActionPost> {
 
   @override
   void didUpdateWidget(covariant ActionPost oldWidget) {
-    if (widget.post != oldWidget.post) {
-      likeCount = widget.post.likeCounts ?? 0;
-      isLiked = widget.post.liked ?? false;
-    }
     super.didUpdateWidget(oldWidget);
+
+    likeCount = widget.post.likeCounts ?? 0;
+    isLiked = widget.post.liked ?? false;
   }
 
   @override

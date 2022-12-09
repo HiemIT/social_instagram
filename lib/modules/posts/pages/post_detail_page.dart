@@ -5,7 +5,7 @@ import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/build_comment_box.dart';
-import 'package:social_instagram/modules/profile/pages/profile_page.dart';
+import 'package:social_instagram/modules/setting/widgets/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';

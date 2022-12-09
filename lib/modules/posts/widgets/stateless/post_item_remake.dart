@@ -3,7 +3,7 @@ import 'package:social_instagram/common/stateless/item_row.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
-import 'package:social_instagram/modules/profile/pages/profile_page.dart';
+import 'package:social_instagram/modules/setting/widgets/profile_page.dart';
 import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';

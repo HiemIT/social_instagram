@@ -25,7 +25,6 @@ class PostDetailBloc extends BlocBase {
     try {
       final response = await PostDetailRepo().getPost(_postId);
 
-      //   check res có null không
       if (response != null) {
         _postCtrl.sink.add(response);
       }
@@ -48,6 +47,7 @@ class PostDetailBloc extends BlocBase {
       rethrow;
     }
   }
+
 
   @override
   void dispose() {

@@ -25,6 +25,7 @@ class AuthenticationBloc extends BlocBase {
     return _signIn(auth.loginWithGmail());
   }
 
+
   @override
   void dispose() {}
 }

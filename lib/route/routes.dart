@@ -8,7 +8,7 @@ import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/pages/create_post_page.dart';
 import 'package:social_instagram/modules/posts/pages/post_detail_page.dart';
 import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
-import 'package:social_instagram/modules/profile/pages/profile_page.dart';
+import 'package:social_instagram/modules/setting/widgets/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 

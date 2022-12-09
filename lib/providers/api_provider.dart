@@ -71,8 +71,7 @@ class ApiProvider {
     }));
   }
 
-  Future<Response> get(
-    String path, {
+  Future<Response> get(String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -88,8 +87,7 @@ class ApiProvider {
     throw res;
   }
 
-  Future<Response> post(
-    String path, {
+  Future<Response> post(String path, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -113,8 +111,7 @@ class ApiProvider {
     throw res;
   }
 
-  Future<Response> delete(
-    String path, {
+  Future<Response> delete(String path, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -123,6 +120,24 @@ class ApiProvider {
     ProgressCallback? onReceiveProgress,
   }) async {
     final res = await _dio.delete(path,
+        data: data,
+        queryParameters: queryParameters,
+        options: options,
+        cancelToken: cancelToken);
+
+    if (res is! ErrorResponse) return res;
+    throw res;
+  }
+
+  Future<Response> put(String path, {
+    data,
+    Map<String, dynamic>? queryParameters,
+    Options? options,
+    CancelToken? cancelToken,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final res = await _dio.put(path,
         data: data,
         queryParameters: queryParameters,
         options: options,

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:social_instagram/blocs/paging_data_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/repos/list_post_paging_repo.dart';
@@ -36,11 +35,18 @@ import '../../../common/blocs/app_even_bloc.dart';
 class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
   Stream<List<Post>?> get postsStream => dataStream;
 
-  late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
   late final StreamSubscription<BlocEvent> _subDeletePost;
+  late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
+  late final StreamSubscription<BlocEvent> _onUpdatePostSub;
+
   final ListPostPagingRepo _repo;
 
   ListPostsRxDartBloc() : _repo = ListPostPagingRepo() {
+    _subDeletePost = AppEventBloc().listenEvent(
+      eventName: EventName.deletePost,
+      handler: _deletePost,
+    );
+
     _onLikeAndUnLikePostSub = AppEventBloc().listenManyEvents(
       listEventName: [
         EventName.likePostDetail,
@@ -48,20 +54,10 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       ],
       handler: _onLikeAndUnlikePost,
     );
-    _subDeletePost = AppEventBloc().listenEvent(
-      eventName: EventName.deletePost,
-      handler: _deletePost,
-    );
-    AppEventBloc().listenEvent(
-      eventName: EventName.deletePost,
-      handler: _deletePost,
-    );
-    AppEventBloc().listenManyEvents(
-      listEventName: [
-        EventName.likePostDetail,
-        EventName.unLikePostDetail,
-      ],
-      handler: _onLikeAndUnlikePost,
+
+    _onUpdatePostSub = AppEventBloc().listenEvent(
+      eventName: EventName.updatePost,
+      handler: _onUpdatePost,
     );
   }
 
@@ -69,9 +65,16 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     return getData();
   }
 
-  void _onLikeAndUnlikePost(BlocEvent evt) {
-    debugPrint('_onLikeAndUnlikePost ${evt.name}');
+  void _deletePost(BlocEvent evt) {
+    final value = evt.value;
+// print('_deletePost $value');
+    if (value is String) {
+      dataSubject.sink.add(dataValue!.where((e) => e.id != value).toList());
+    }
+  }
 
+  void _onLikeAndUnlikePost(BlocEvent evt) {
+    print('_onLikeAndUnlikePost ${evt.name}');
     final oldPosts = dataValue ?? [];
 
     final index = oldPosts.indexWhere((p) => p.id == evt.value);
@@ -95,15 +98,25 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     dataSubject.sink.add(oldPosts.toList());
   }
 
-  void _deletePost(BlocEvent evt) {
-    final value = evt.value;
-// print('_deletePost $value');
-    if (value is String) {
-      // value <=> id post
-      dataSubject.sink
-          .add(dataValue!.where((e) => e.id != value).toList()); // C1
-      // C2: call api refresh list post
+  void _onUpdatePost(BlocEvent evt) {
+    print('_onUpdatePost ${evt.name}');
+    final oldPosts = dataValue ?? [];
+
+    final index = oldPosts.indexWhere((p) => p.id == evt.value);
+
+    if (index == -1) {
+      return;
     }
+
+    final post = oldPosts[index];
+
+    post
+      ..liked = true
+      ..likeCounts = post.likeCounts! + 1;
+  
+    oldPosts[index] = post;
+
+    dataSubject.sink.add(oldPosts.toList());
   }
 
   @override

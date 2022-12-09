@@ -4,6 +4,7 @@ import 'package:rxdart/subjects.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 
 enum EventName {
+  updatePost,
   deletePost,
   likePostDetail,
   unLikePostDetail,
