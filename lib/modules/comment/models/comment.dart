@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
 import '../../../models/user.dart';
+import 'comment_meta_data.dart';
 
 part 'comment.g.dart';
 
@@ -27,6 +28,9 @@ class Comment {
   @JsonKey(name: 'like_count', includeIfNull: false)
   int? likeCounts;
 
+  @JsonKey(name: 'metadata', includeIfNull: true)
+  CommentMetaData? metaData;
+
   String get ownerId => user?.id ?? '';
 
   Comment({
@@ -37,6 +41,7 @@ class Comment {
     this.user,
     this.liked,
     this.likeCounts,
+    this.metaData,
   });
 
   String get displayName => user?.displayName ?? '';
