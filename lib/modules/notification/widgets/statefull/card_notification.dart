@@ -15,7 +15,8 @@ class CardNotification extends StatelessWidget {
     final int? isRead = notify?.isRead ?? 1;
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: GestureDetector(
+      child: InkWell(
+        onTap: () {},
         child: Card(
           color: isRead == 1
               ? Theme.of(context).primaryColor
