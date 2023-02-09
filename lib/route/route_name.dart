@@ -4,5 +4,8 @@ class RouteName {
   static const String createPostPage = '/create-post-page';
   static const String postDetailPage = '/post-detail-page';
   static const String profilePage = '/profile-page';
+  static const String profileUserPage = '/profile-user-page';
+  static const String editProfilePage = '/edit-profile-page';
+  static const String editInfoProfilePage = '/edit-info-profile-page';
   static const String notificationPage = '/notification-page';
 }

@@ -18,19 +18,32 @@ class User {
   @JsonKey(name: 'last_name')
   final String? lastName;
 
+  @JsonKey(name: 'email')
+  final String? email;
+
   @JsonKey(name: 'avatar')
   final Picture? avatar;
 
   @JsonKey(name: 'counters')
   final Counters? counters;
 
-  User(
-      {this.id,
-      this.username,
-      this.firstName,
-      this.lastName,
-      this.avatar,
-      this.counters});
+  @JsonKey(name: 'followed')
+  final bool? followed;
+
+  @JsonKey(name: 'instagram_username')
+  final String? instagramUsername;
+
+  User({
+    this.id,
+    this.username,
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.avatar,
+    this.counters,
+    this.instagramUsername,
+    this.followed,
+  });
 
   String get displayFirstName => firstName ?? '';
 
@@ -42,19 +55,40 @@ class User {
     return avatar?.cloudUrl() ?? '';
   }
 
-  int get countPhotos {
+  String get displayInstagramUsername {
+    return instagramUsername ?? '';
+  }
+
+  int get totalPhotos {
     return counters?.photos ?? 0;
   }
 
-  int get countLikes {
+  int get totalFollowers {
+    return counters?.followers ?? 0;
+  }
+
+  int get totalFollowings {
+    return counters?.followings ?? 0;
+  }
+
+  int get totalLikes {
     return counters?.likes ?? 0;
   }
 
-  int get countCollections {
+  int get totalCollections {
     return counters?.collections ?? 0;
+  }
+
+  bool get followedUser {
+    return followed ?? false;
   }
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserToJson(this);
+
+  @override
+  String toString() {
+    return 'User{id: $id, username: $username, firstName: $firstName, lastName: $lastName, email: $email, avatar: $avatar, counters: $counters}';
+  }
 }

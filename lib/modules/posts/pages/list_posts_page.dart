@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/posts/blocs/list_posts_rxdart_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/stateless/activity_indicator.dart';
-import 'package:social_instagram/modules/posts/widgets/stateless/post_item_remake.dart';
+import 'package:social_instagram/modules/posts/widgets/stateless/post_item.dart';
 import 'package:social_instagram/route/route_name.dart';
 
 import '../../../themes/app_colors.dart';
-import '../../../utils/uidata.dart';
+import '../../../utils/uiData.dart';
 import '../models/post.dart';
 
 class ListPostsPage extends StatefulWidget {
@@ -135,7 +135,7 @@ class _ListPostsPageState extends State<ListPostsPage> {
                   return SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return PostItemRemake(
+                        return PostItem(
                           post: snapshot.data![index],
                         );
                       },

@@ -17,7 +17,7 @@ import '../../../common/blocs/app_even_bloc.dart';
 //   // hàm này để lấy dữ liệu từ server về
 //   Future<void> getPosts() async {
 //     try {
-//       final res = await ListPostsRepo().getPosts();
+//       final res = await ListP ostsRepo().getPosts();
 //       if (res != null) {
 //         _postsCtrl.sink.add(res);
 //       }
@@ -37,7 +37,6 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
 
   late final StreamSubscription<BlocEvent> _subDeletePost;
   late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
-  late final StreamSubscription<BlocEvent> _onUpdatePostSub;
 
   final ListPostPagingRepo _repo;
 
@@ -54,11 +53,6 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       ],
       handler: _onLikeAndUnlikePost,
     );
-
-    _onUpdatePostSub = AppEventBloc().listenEvent(
-      eventName: EventName.updatePost,
-      handler: _onUpdatePost,
-    );
   }
 
   Future<void> getPosts() async {
@@ -69,6 +63,7 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
     final value = evt.value;
 // print('_deletePost $value');
     if (value is String) {
+      // ở đây mình sẽ lấy ra list post hiện tại và xóa đi 1 post nào đó rồi add vào stream để cập nhật lại
       dataSubject.sink.add(dataValue!.where((e) => e.id != value).toList());
     }
   }
@@ -93,27 +88,6 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       ..likeCounts = likeCountNew
       ..liked = eventIsLike;
 
-    oldPosts[index] = post;
-
-    dataSubject.sink.add(oldPosts.toList());
-  }
-
-  void _onUpdatePost(BlocEvent evt) {
-    print('_onUpdatePost ${evt.name}');
-    final oldPosts = dataValue ?? [];
-
-    final index = oldPosts.indexWhere((p) => p.id == evt.value);
-
-    if (index == -1) {
-      return;
-    }
-
-    final post = oldPosts[index];
-
-    post
-      ..liked = true
-      ..likeCounts = post.likeCounts! + 1;
-  
     oldPosts[index] = post;
 
     dataSubject.sink.add(oldPosts.toList());

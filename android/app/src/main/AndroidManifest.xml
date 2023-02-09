@@ -11,7 +11,7 @@
 
 
     <application
-            android:label="social_instagram"
+            android:label="DOFHunt"
             android:icon="@mipmap/ic_launcher">
         <activity
                 android:name=".MainActivity"

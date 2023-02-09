@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/notification/pages/notification_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
-import 'package:social_instagram/modules/setting/pages/setting_page.dart';
 import 'package:social_instagram/themes/app_colors.dart';
-import 'package:social_instagram/utils/uidata.dart';
+import 'package:social_instagram/utils/uiData.dart';
+
+import '../../setting/pages/setting_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);

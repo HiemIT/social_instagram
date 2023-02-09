@@ -48,7 +48,6 @@ class PostDetailBloc extends BlocBase {
     }
   }
 
-
   @override
   void dispose() {
     _postCtrl.close();

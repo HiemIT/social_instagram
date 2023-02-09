@@ -7,7 +7,7 @@ import 'package:social_instagram/modules/authentication/bloc/authentication_bloc
 import 'package:social_instagram/modules/authentication/enum/login_state.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_text_style.dart';
-import 'package:social_instagram/utils/uidata.dart';
+import 'package:social_instagram/utils/uiData.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);

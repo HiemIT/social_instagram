@@ -11,12 +11,15 @@ User _$UserFromJson(Map<String, dynamic> json) => User(
       username: json['username'] as String?,
       firstName: json['first_name'] as String?,
       lastName: json['last_name'] as String?,
+      email: json['email'] as String?,
       avatar: json['avatar'] == null
           ? null
           : Picture.fromJson(json['avatar'] as Map<String, dynamic>),
       counters: json['counters'] == null
           ? null
           : Counters.fromJson(json['counters'] as Map<String, dynamic>),
+      instagramUsername: json['instagram_username'] as String?,
+      followed: json['followed'] as bool?,
     );
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -24,6 +27,9 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'username': instance.username,
       'first_name': instance.firstName,
       'last_name': instance.lastName,
+      'email': instance.email,
       'avatar': instance.avatar,
       'counters': instance.counters,
+      'followed': instance.followed,
+      'instagram_username': instance.instagramUsername,
     };

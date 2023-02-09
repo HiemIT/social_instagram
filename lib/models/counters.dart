@@ -13,7 +13,18 @@ class Counters {
   @JsonKey(name: 'collections')
   final int? collections;
 
-  Counters({this.photos, this.likes, this.collections});
+  @JsonKey(name: 'followers')
+  final int? followers;
+
+  @JsonKey(name: 'followings')
+  final int? followings;
+
+  Counters(
+      {this.photos,
+      this.likes,
+      this.collections,
+      this.followers,
+      this.followings});
 
   factory Counters.fromJson(Map<String, dynamic> json) =>
       _$CountersFromJson(json);

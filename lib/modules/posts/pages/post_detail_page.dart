@@ -32,6 +32,8 @@ class PostDetailPage extends StatefulWidget {
 class _PostDetailPageState extends State<PostDetailPage> {
   Post get post => widget.post;
 
+  String? get id => widget.id;
+
   PostDetailBloc? get bloc => BlocProvider.of<PostDetailBloc>(context);
 
   TextEditingController commentsTEC = TextEditingController();
@@ -91,7 +93,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                               subtitle: StringUtils()
                                   .formatTimeAgo(post?.createdAt as DateTime),
                               avatarUrl: post?.user?.avatar?.url ?? '',
-                              rightWidget: widget.id == post?.user?.id
+                              rightWidget: (flag = widget.id == post?.user?.id)
                                   ? showOption()
                                   : null,
                             ),
@@ -108,7 +110,10 @@ class _PostDetailPageState extends State<PostDetailPage> {
                         const Divider(
                           thickness: 1,
                         ),
-                        const ListComment(),
+                        ListComment(
+                          postId: post.id!,
+                          flag: flag,
+                        ),
                       ],
                     ),
                   )

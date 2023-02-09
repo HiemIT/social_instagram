@@ -20,6 +20,8 @@ class _NotificationPageState extends State<NotificationPage> {
   late final ScrollController _scrollCtrl;
   final _notificationBloc = ListNotificationRxdartBloc();
 
+  // NotificationsBloc? get bloc => BlocProvider.of<NotificationsBloc>(context);
+
   @override
   void initState() {
     super.initState();
@@ -36,54 +38,57 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).primaryColor,
-        body: RefreshIndicator(
-          key: _refreshIndicatorKey,
-          color: AppColors.white,
-          backgroundColor: AppColors.dark,
-          strokeWidth: 1.0,
-          onRefresh: () async {},
-          child: CustomScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              controller: _scrollCtrl,
-              slivers: <Widget>[
-                SliverAppBar(
-                  pinned: true,
-                  elevation: 0,
-                  backgroundColor: Theme.of(context).primaryColor,
-                  title: Text(
-                    'Notification',
-                    style: AppTextStyle.LoginStyle3,
-                  ),
-                ),
-                StreamBuilder<List<Notify>?>(
-                    stream: _notificationBloc.notificationStream,
-                    builder: (context, snapshot) {
-                      print("Notification: ${snapshot.data}");
-                      if (snapshot.data == null) {
-                        return const SliverFillRemaining(
-                          child: ActivityIndicator(),
-                        );
-                      }
-                      if (snapshot.hasError) {
-                        return SliverFillRemaining(
-                          child: Center(
-                            child: Text(snapshot.hasError.toString()),
-                          ),
-                        );
-                      }
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            return CardNotification(
-                              notify: snapshot.data![index],
-                            );
-                          },
-                          childCount: snapshot.data!.length,
-                        ),
+      backgroundColor: Theme.of(context).primaryColor,
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        color: AppColors.white,
+        backgroundColor: AppColors.dark,
+        strokeWidth: 1.0,
+        onRefresh: () async {},
+        child: CustomScrollView(
+          physics: const AlwaysScrollableScrollPhysics(),
+          controller: _scrollCtrl,
+          slivers: <Widget>[
+            SliverAppBar(
+              pinned: true,
+              elevation: 0,
+              backgroundColor: Theme.of(context).primaryColor,
+              title: Text(
+                'Notification',
+                style: AppTextStyle.LoginStyle3,
+              ),
+            ),
+            StreamBuilder<List<Notify>?>(
+              stream: _notificationBloc.notificationStream,
+              builder: (context, snapshot) {
+                if (snapshot.data == null) {
+                  return const SliverFillRemaining(
+                    child: ActivityIndicator(),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return SliverFillRemaining(
+                    child: Center(
+                      child: Text(snapshot.hasError.toString()),
+                    ),
+                  );
+                }
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      return CardNotification(
+                        notify: snapshot.data![index],
+                        context: context,
                       );
-                    })
-              ]),
-        ));
+                    },
+                    childCount: snapshot.data!.length,
+                  ),
+                );
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

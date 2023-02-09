@@ -8,9 +8,8 @@ import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';
 
-class PostItemRemake extends StatelessWidget {
-  const PostItemRemake({Key? key, required this.post, this.uid})
-      : super(key: key);
+class PostItem extends StatelessWidget {
+  const PostItem({Key? key, required this.post, this.uid}) : super(key: key);
 
   final Post post;
   final String? uid;

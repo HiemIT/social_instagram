@@ -35,14 +35,14 @@ abstract class PagingDataBehaviorBloc<T> extends BlocBase {
       dataRepo.isFirstPage
           ? _dataSubject.sink.add(result as List<T>?)
           : _dataSubject.sink.add(
-              [..._dataSubject.stream.value ?? [], ...result as Iterable<T>],
-            );
+        [..._dataSubject.stream.value ?? [], ...result as Iterable<T>],
+      );
     } catch (e) {
       _dataSubject.sink.addError(e);
     } finally {
       Future.delayed(
         const Duration(milliseconds: 300),
-        () {
+            () {
           if (!isLoadingSubject.isClosed) {
             isLoadingSubject.sink.add(false);
           }

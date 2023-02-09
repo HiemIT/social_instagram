@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:social_instagram/blocs/paging_data_bloc.dart';
+import 'package:social_instagram/common/blocs/app_even_bloc.dart';
 import 'package:social_instagram/modules/notification/models/notify.dart';
 import 'package:social_instagram/modules/notification/repos/list_notification_paging_repo.dart';
 import 'package:social_instagram/resource/paging_repo.dart';
@@ -29,12 +32,33 @@ import 'package:social_instagram/resource/paging_repo.dart';
 class ListNotificationRxdartBloc extends PagingDataBehaviorBloc<Notify> {
   Stream<List<Notify>?> get notificationStream => dataStream;
 
+  late final StreamSubscription<BlocEvent> _subReadNotify;
   final ListNotificationPagingRepo _repo;
 
-  ListNotificationRxdartBloc() : _repo = ListNotificationPagingRepo() {}
+  ListNotificationRxdartBloc() : _repo = ListNotificationPagingRepo() {
+    _subReadNotify = AppEventBloc().listenEvent(
+      eventName: EventName.deletePost,
+      handler: _readNotification,
+    );
+  }
 
   Future<void> getNotifications() async {
     return getData();
+  }
+
+  void _readNotification(BlocEvent event) {
+    final value = event.value;
+
+    if (value is Notify) {
+      dataSubject.sink
+          .add(dataValue!.where((element) => element.id != value.id).toList());
+    }
+  }
+
+  @override
+  dispose() {
+    _subReadNotify.cancel();
+    super.dispose();
   }
 
   @override

@@ -34,6 +34,7 @@ class AppEventBloc extends BlocBase {
   // ban event
   Function(BlocEvent) get emitEvent => _eventController.sink.add;
 
+  // listenEvent để lắng nghe event và xử lý dữ liệu trả về cho UI khi có sự thay đổi dữ liệu
   StreamSubscription<BlocEvent> listenEvent({
     required EventName eventName,
     required Function(BlocEvent) handler,

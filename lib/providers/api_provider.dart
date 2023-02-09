@@ -71,7 +71,8 @@ class ApiProvider {
     }));
   }
 
-  Future<Response> get(String path, {
+  Future<Response> get(
+    String path, {
     Map<String, dynamic>? queryParameters,
     Options? options,
     CancelToken? cancelToken,
@@ -87,7 +88,8 @@ class ApiProvider {
     throw res;
   }
 
-  Future<Response> post(String path, {
+  Future<Response> post(
+    String path, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -111,7 +113,8 @@ class ApiProvider {
     throw res;
   }
 
-  Future<Response> delete(String path, {
+  Future<Response> delete(
+    String path, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,
@@ -129,7 +132,8 @@ class ApiProvider {
     throw res;
   }
 
-  Future<Response> put(String path, {
+  Future<Response> put(
+    String path, {
     data,
     Map<String, dynamic>? queryParameters,
     Options? options,

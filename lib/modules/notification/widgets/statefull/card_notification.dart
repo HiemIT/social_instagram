@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/common/stateless/item_row.dart';
 import 'package:social_instagram/modules/notification/models/notify.dart';
+import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 
 import '../../../../utils/string_utils.dart';
 
 class CardNotification extends StatelessWidget {
-  const CardNotification({Key? key, required this.notify}) : super(key: key);
+  const CardNotification(
+      {Key? key, required this.notify, required this.context})
+      : super(key: key);
+  final BuildContext context;
 
   final Notify? notify;
 
@@ -16,7 +20,11 @@ class CardNotification extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          print("notify: ${notify?.id}");
+          Navigator.pushNamed(context, RouteName.postDetailPage,
+              arguments: notify?.id);
+        },
         child: Card(
           color: isRead == 1
               ? Theme.of(context).primaryColor

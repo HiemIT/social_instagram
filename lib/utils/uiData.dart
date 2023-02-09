@@ -16,4 +16,6 @@ class UIData {
   static const String iconNotifications = "$iconDir/iconNotifications.png";
   static const String iconProfile = "$iconDir/iconProfile.png";
   static const String iconCamera = "$iconDir/iconCamera.png";
+  static const String iconCombinedShape = "$iconDir/combinedShape.png";
+  static const String iconPicture = "$iconDir/picture.png";
 }

@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       _locale = locale;
     });
   }
-
+ 
   @override
   void initState() {
     super.initState();
@@ -96,7 +96,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   Widget _builder(BuildContext context, Widget? child) {
+    // get the current media query
     final data = MediaQuery.of(context);
+    // return a new media query with the same data, except with a text scale factor of 1
     return MediaQuery(
       data: data.copyWith(textScaleFactor: 1),
       child: child!,

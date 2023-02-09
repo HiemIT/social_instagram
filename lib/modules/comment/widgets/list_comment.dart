@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:social_instagram/common/stateless/item_row.dart';
 import 'package:social_instagram/modules/comment/blocs/comments_bloc.dart';
 import 'package:social_instagram/modules/comment/models/comment.dart';
-import 'package:social_instagram/modules/posts/widgets/statefull/reaction_comment.dart';
+import 'package:social_instagram/modules/comment/widgets/comment_item_bubble.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 
 class ListComment extends StatefulWidget {
-  const ListComment({Key? key}) : super(key: key);
+  const ListComment({Key? key, required this.postId, required this.flag})
+      : super(key: key);
+  final String postId;
+  final bool flag;
 
   @override
   State<ListComment> createState() => _ListCommentState();
@@ -63,7 +65,12 @@ class _ListCommentState extends State<ListComment> {
                 color: Colors.transparent,
                 child: Padding(
                   padding: const EdgeInsets.all(0),
-                  child: CommentItemBubble(comment: comment),
+                  child: CommentItemBubble(
+                    idPost: widget.postId,
+                    comment: comment,
+                    onReact: (int, bool) {},
+                    flag: widget.flag,
+                  ),
                 ),
               );
             },
@@ -89,39 +96,6 @@ class _ListCommentState extends State<ListComment> {
           ),
         );
       },
-    );
-  }
-}
-
-class CommentItemBubble extends StatelessWidget {
-  final Comment? comment;
-
-  const CommentItemBubble({Key? key, required this.comment}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(12, 12, 12, 8),
-          child: Column(
-            children: [
-              ItemRow(
-                avatarUrl: comment!.urlUserAvatar,
-                title: "${comment!.displayName}",
-                subtitle: '${comment!.content}',
-                maxLines: 1,
-                sizeAvatar: 32,
-                isCmt: true,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              ReactionComment(comment: comment!),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }
