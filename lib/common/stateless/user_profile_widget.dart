@@ -4,6 +4,7 @@ import 'package:social_instagram/common/stateless/item_total.dart';
 import 'package:social_instagram/models/user.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/themes/app_text_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class UserProfileWidget extends StatelessWidget {
   const UserProfileWidget({Key? key, required this.user}) : super(key: key);
@@ -53,23 +54,55 @@ class UserProfileWidget extends StatelessWidget {
               children: [
                 ItemTotal(
                   title: "Photos",
-                  total: user.countPhotos.toString(),
+                  total: user.totalPhotos.toString(),
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                ItemTotal(title: "Likes", total: user.countLikes.toString()),
                 const SizedBox(
                   width: 20,
                 ),
                 ItemTotal(
-                    title: "Collections",
-                    total: user.countCollections.toString()),
+                    title: "Followers", total: user.totalFollowers.toString()),
+                const SizedBox(
+                  width: 20,
+                ),
+                ItemTotal(
+                  title: "Following",
+                  total: user.totalFollowings.toString(),
+                ),
               ],
             ),
           ),
           const SizedBox(
             height: 8,
+          ),
+          if (user.instagramUsername != null) ...[
+            const SizedBox(height: 5),
+            Wrap(
+              children: [
+                const Text('Instagram: ', style: AppTextStyle.LoginStyle5),
+                GestureDetector(
+                  onTap: () async {
+                    Uri url = Uri.parse(
+                        'https://www.instagram.com/${user.instagramUsername}/');
+                    try {
+                      if (await canLaunchUrl(url)) {}
+                      await launchUrl(
+                        url,
+                        mode: LaunchMode.externalApplication,
+                      );
+                    } catch (e) {
+                      debugPrint(e.toString());
+                    }
+                  },
+                  child: Text(
+                    '${user.instagramUsername}',
+                    style: const TextStyle(color: Color(0xff3498db)),
+                  ),
+                )
+              ],
+            ),
+          ],
+          const SizedBox(
+            height: 5,
           ),
         ],
       ),
