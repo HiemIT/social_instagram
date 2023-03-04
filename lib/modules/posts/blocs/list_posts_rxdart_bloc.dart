@@ -40,7 +40,8 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
 
   final ListPostPagingRepo _repo;
 
-  ListPostsRxDartBloc() : _repo = ListPostPagingRepo() {
+  ListPostsRxDartBloc() :
+   _repo = ListPostPagingRepo() {
     _subDeletePost = AppEventBloc().listenEvent(
       eventName: EventName.deletePost,
       handler: _deletePost,

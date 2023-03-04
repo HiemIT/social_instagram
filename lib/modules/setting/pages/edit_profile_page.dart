@@ -190,8 +190,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
       //  If the response is true, the user will be redirected to the profile page and call function profileBloc to update the profile and save it in local storage
       if (response) {
-        // quay lai trang profile nhung muon load lai du lieu moi
-        Navigator.pop(context);
+        Navigator.pop(context, [
+          _firstNameController.text,
+          _lastNameController.text,
+          _emailController.text
+        ]);
         _profileBloc!.getProfileByUser();
         return;
       }

@@ -39,12 +39,6 @@ class _CurrentUserWidgetState extends State<CurrentUserWidget> {
   }
 
   @override
-  void didUpdateWidget(covariant CurrentUserWidget oldWidget) {
-    profileUser?.getProfileUser();
-    super.didUpdateWidget(oldWidget);
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -163,6 +157,7 @@ class _CurrentUserWidgetState extends State<CurrentUserWidget> {
                                           'Bạn có chắc chắn muốn đăng xuất không?',
                                       onYesPressed: () {
                                         _logout();
+                                        Navigator.pop(context);
                                       },
                                       onNoPressed: () {
                                         Navigator.pop(context);

@@ -43,76 +43,76 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
-        stream: profileBloc?.profileByUserStream,
-        builder: (context, snapshot) {
-          if (snapshot.data == null) {
-            return const Center(child: CircularProgressIndicator());
-          }
+      stream: profileBloc?.profileByUserStream,
+      builder: (context, snapshot) {
+        if (snapshot.data == null) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-          if (snapshot.hasError) {
-            return Center(child: Text(snapshot.error.toString()));
-          }
+        if (snapshot.hasError) {
+          return Center(child: Text(snapshot.error.toString()));
+        }
 
-          final user = snapshot.data!;
-          List<Map> tabs = [];
-          if (user.totalPhotos != 0) {
-            tabs.add({
-              'title': UIData.iconCombinedShape,
-              'tab': TabPhotoView(),
-            });
-          }
-          if (user.totalPhotos != 0) {
-            tabs.add({
-              'title': UIData.iconPicture,
-              'tab': Container(),
-            });
-          }
-          return Scaffold(
+        final user = snapshot.data!;
+        List<Map> tabs = [];
+        if (user.totalPhotos != 0) {
+          tabs.add({
+            'title': UIData.iconCombinedShape,
+            'tab': TabPhotoView(),
+          });
+        }
+        if (user.totalPhotos != 0) {
+          tabs.add({
+            'title': UIData.iconPicture,
+            'tab': Container(),
+          });
+        }
+        return Scaffold(
+          backgroundColor: AppColors.dark,
+          appBar: AppBar(
+            elevation: 0,
             backgroundColor: AppColors.dark,
-            appBar: AppBar(
-              elevation: 0,
-              backgroundColor: AppColors.dark,
-              title: Text('${user.displayName}'),
-              centerTitle: true,
-            ),
-            body: NestedScrollView(
-              headerSliverBuilder: (context, innerBoxIsScrolled) {
-                return <Widget>[
-                  SliverToBoxAdapter(
-                    child: UserProfileWidget(
-                      user: user,
-                    ),
+            title: Text('${user.displayName}'),
+            centerTitle: true,
+          ),
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return <Widget>[
+                SliverToBoxAdapter(
+                  child: UserProfileWidget(
+                    user: user,
                   ),
-                ];
-              },
-              body: DefaultTabController(
-                length: tabs.length,
-                child: Column(
-                  children: <Widget>[
-                    TabBar(
-                      tabs: tabs
-                          .map((tab) =>
-                              Tab(icon: ImageIcon(AssetImage(tab['title']))))
+                ),
+              ];
+            },
+            body: DefaultTabController(
+              length: tabs.length,
+              child: Column(
+                children: <Widget>[
+                  TabBar(
+                    tabs: tabs
+                        .map((tab) =>
+                            Tab(icon: ImageIcon(AssetImage(tab['title']))))
+                        .toList(),
+                  ),
+                  Expanded(
+                    child: TabBarView(
+                      children: tabs
+                          .map(
+                            (tab) => Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 1),
+                              child: tab["tab"],
+                            ),
+                          )
                           .toList(),
                     ),
-                    Expanded(
-                      child: TabBarView(
-                        children: tabs
-                            .map(
-                              (tab) => Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 1),
-                                child: tab["tab"],
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 }

@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
-
     <application
             android:label="DOFHunt"
             android:icon="@mipmap/ic_launcher">
@@ -48,5 +47,4 @@
                 android:name="flutterEmbedding"
                 android:value="2"/>
     </application>
-    <uses-permission android:name="android.permission.CAMERA"/>
 </manifest>

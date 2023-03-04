@@ -47,7 +47,7 @@ class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
           commentText,
           style: Theme.of(context)
               .textTheme
-              .bodyText2!
+              .bodyMedium!
               .copyWith(color: AppColors.slate),
           maxLines: 1,
           overflow: TextOverflow.clip,
@@ -72,7 +72,7 @@ class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
                 commentText,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2!
+                    .bodyMedium!
                     .copyWith(color: AppColors.white92),
               )
             : Column(
@@ -82,7 +82,7 @@ class _ExpandedTextWidgetState extends State<ExpandedTextWidget> {
                     flag ? firstHalf : commentText,
                     style: Theme.of(context)
                         .textTheme
-                        .bodyText2!
+                        .bodyMedium!
                         .copyWith(color: AppColors.white92),
                   ),
                   SizedBox(

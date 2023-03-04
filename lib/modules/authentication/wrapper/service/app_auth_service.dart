@@ -23,6 +23,7 @@ class AppAuthService implements AuthService {
     return handleError(authResult);
   }
 
+
   LoginData handleError(AuthResult authResult) {
     if (authResult.loginStatus == LoginStatus.cancelledByUser) {
       throw PlatformException(

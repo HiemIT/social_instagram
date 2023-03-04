@@ -23,5 +23,8 @@ class ProfileBloc extends BlocBase {
   Future<void> getPostByUser() async => _listPostByUser.getData();
 
   @override
-  void dispose() {}
+  void dispose() {
+    _listPostByUser.dispose();
+    _profileByBloc.dispose();
+  }
 }
