@@ -50,6 +50,11 @@ dependencies:
   awesome_snackbar_content: ^0.0.9
   json_annotation: ^4.7.0
   url_launcher: ^6.1.7
+
+  # Image Save
+  image_gallery_saver: ^1.7.1
+  # Support
+  overlay_support: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

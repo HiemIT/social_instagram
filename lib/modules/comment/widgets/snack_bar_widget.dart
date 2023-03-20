@@ -32,16 +32,15 @@ class SnackBarWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-
           iconType == IconType.error
               ? Icon(
-            Icons.error,
-            color: Colors.white,
-          )
+                  Icons.error,
+                  color: Colors.white,
+                )
               : Icon(
-            Icons.check,
-            color: Colors.white,
-          ),
+                  Icons.check,
+                  color: Colors.white,
+                ),
         ],
       ),
     );

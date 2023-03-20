@@ -1,10 +1,21 @@
-import 'package:social_instagram/resource/delete_repo.dart';
+import 'package:social_instagram/providers/api_provider.dart';
 
-class ReadNotificationRepo extends DeleteRepo {
+class ReadNotificationRepo {
   final String notifyId;
+
+  final _apiProvider = ApiProvider();
 
   ReadNotificationRepo(this.notifyId);
 
-  @override
-  String get url => '/notifications/$notifyId';
+  Future<bool> readNotification() async {
+    try {
+      final response = await _apiProvider.put(
+        '/notifications/$notifyId',
+      );
+
+      return (response.statusCode != 200) ? false : true;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

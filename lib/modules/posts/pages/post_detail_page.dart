@@ -5,7 +5,6 @@ import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
 import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
 import 'package:social_instagram/modules/posts/widgets/statefull/build_comment_box.dart';
-import 'package:social_instagram/modules/setting/widgets/profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';
@@ -31,7 +30,6 @@ class PostDetailPage extends StatefulWidget {
 
 class _PostDetailPageState extends State<PostDetailPage> {
   Post get post => widget.post;
-
   String? get id => widget.id;
 
   PostDetailBloc? get bloc => BlocProvider.of<PostDetailBloc>(context);
@@ -84,8 +82,8 @@ class _PostDetailPageState extends State<PostDetailPage> {
                     delegate: SliverChildListDelegate(
                       [
                         GestureDetector(
-                          onTap: () =>
-                              navigateToProfilePage(context, post!.user),
+                          onTap: () => {},
+                          // navigateToProfilePage(context, post!.user),
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(12, 12, 12, 8),
                             child: ItemRow(
@@ -93,7 +91,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
                               subtitle: StringUtils()
                                   .formatTimeAgo(post?.createdAt as DateTime),
                               avatarUrl: post?.user?.avatar?.url ?? '',
-                              rightWidget: (flag = widget.id == post?.user?.id)
+                              rightWidget: (flag = (id == post?.user?.id))
                                   ? showOption()
                                   : null,
                             ),
@@ -221,8 +219,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
   Future<void> deletePost() async {
     try {
       return bloc!.deletePost().then((value) {
-        Navigator.pop(context);
-        Navigator.pop(context);
+        Navigator.popUntil(context, (route) => route.settings.name == '/');
       });
     } catch (e) {}
   }

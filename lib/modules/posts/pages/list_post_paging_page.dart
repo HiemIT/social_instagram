@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:social_instagram/blocs/app_state_bloc.dart';
 
 import '../../../common/mixin/scroll_page_mixin.dart';
 import '../../../route/route_name.dart';
@@ -25,20 +24,12 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
   final _controller = TextEditingController();
   final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
       GlobalKey<RefreshIndicatorState>();
-  String? uid;
 
   @override
   void initState() {
     super.initState();
-    currentUser();
+    // currentUser();
     _postsBloc.getPosts();
-  }
-
-  Future<void> currentUser() async {
-    final idAd = await AppStateBloc.getProfileUser().then((user) => user.id);
-    setState(() {
-      uid = idAd;
-    });
   }
 
   @override
@@ -49,7 +40,6 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
 
   @override
   Widget build(BuildContext context) {
-    print("UID $uid");
     return Scaffold(
       backgroundColor: AppColors.dark,
       body: RefreshIndicator(
@@ -147,7 +137,6 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
                         final post = snapshot.data![index];
                         return PostItem(
                           post: post,
-                          uid: uid!,
                         );
                       },
                       childCount: snapshot.data?.length ?? 0,

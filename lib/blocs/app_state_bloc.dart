@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:rxdart/rxdart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:social_instagram/models/user.dart';
 import 'package:social_instagram/providers/log_provider.dart';
 import 'package:social_instagram/utils/prefs_key.dart';
 
-import '../modules/profile/repos/profile_repo.dart';
 import '../providers/bloc_provider.dart';
 
 enum AppState { loading, unAuthorized, authorized }
@@ -37,7 +33,6 @@ class AppStateBloc implements BlocBase {
     switch (authorLevel) {
       case 2:
         await changeAppState(AppState.authorized);
-        await saveProfileUser();
         break;
       default:
         await changeAppState(AppState.unAuthorized);
@@ -58,20 +53,6 @@ class AppStateBloc implements BlocBase {
     await prefs.clear();
 
     await changeAppState(AppState.unAuthorized);
-  }
-
-  // Hàm này s gọi profileUser để lấy ra thông tin của user đang đăng nhập và lưu vào shared preferences để lấy ra khi cần thiết
-  static Future<void> saveProfileUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    final profileUser = await ProfileRepo().getProfile();
-    await prefs.setString(PrefsKey.profileUser, jsonEncode(profileUser));
-  }
-
-  // Hàm này sẽ lấy ra thông tin của user đang đăng nhập từ shared preferences
-  static Future<User> getProfileUser() async {
-    final prefs = await SharedPreferences.getInstance();
-    final profileUser = prefs.getString(PrefsKey.profileUser);
-    return User.fromJson(jsonDecode(profileUser!));
   }
 
   @override

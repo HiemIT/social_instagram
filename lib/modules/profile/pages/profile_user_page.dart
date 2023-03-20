@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/common/stateless/user_profile_widget.dart';
-import 'package:social_instagram/models/user.dart';
-import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
+// import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
 import 'package:social_instagram/modules/profile/widgets/statefull/tab_photo_view.dart';
+import 'package:social_instagram/modules/profileUser/blocs/app_user_bloc.dart';
 import 'package:social_instagram/utils/uiData.dart';
 
+import '../../../models/user.dart';
 import '../../../providers/bloc_provider.dart';
 import '../../../themes/app_colors.dart';
 
@@ -21,15 +22,15 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
       GlobalKey<RefreshIndicatorState>();
 
   // call profile bloc
-  ProfileBloc? get profileBloc => BlocProvider.of<ProfileBloc>(context);
-
+  AppUserBloc? get profileBloc => BlocProvider.of<AppUserBloc>(context);
+  final AppUserBloc _appUserBloc = AppUserBloc();
   @override
   void initState() {
     super.initState();
     _scrollCtrl.addListener(() {
       if (_scrollCtrl.position.pixels == _scrollCtrl.position.maxScrollExtent) {
         // call post bloc
-        BlocProvider.of<ProfileBloc>(context)?.postStream;
+        BlocProvider.of<AppUserBloc>(context);
       }
     });
   }
@@ -42,18 +43,22 @@ class _ProfileUserPageState extends State<ProfileUserPage> {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<User?>(
-      stream: profileBloc?.profileByUserStream,
+    return StreamBuilder(
+      stream: _appUserBloc.userStream,
       builder: (context, snapshot) {
         if (snapshot.data == null) {
-          return const Center(child: CircularProgressIndicator());
+          return Container(
+              color: AppColors.dark,
+              child: const Center(child: CircularProgressIndicator()));
         }
 
         if (snapshot.hasError) {
-          return Center(child: Text(snapshot.error.toString()));
+          return Container(
+              color: AppColors.dark,
+              child: Center(child: Text(snapshot.error.toString())));
         }
 
-        final user = snapshot.data!;
+        final user = snapshot.data as User;
         List<Map> tabs = [];
         if (user.totalPhotos != 0) {
           tabs.add({

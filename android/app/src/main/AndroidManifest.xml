@@ -9,9 +9,11 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
 
+    <!-- Image Save -->
     <application
             android:label="DOFHunt"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@mipmap/ic_launcher"
+            android:requestLegacyExternalStorage="true">    
         <activity
                 android:name=".MainActivity"
                 android:launchMode="singleTop"
@@ -46,5 +48,8 @@
         <meta-data
                 android:name="flutterEmbedding"
                 android:value="2"/>
+    
+
     </application>
+
 </manifest>

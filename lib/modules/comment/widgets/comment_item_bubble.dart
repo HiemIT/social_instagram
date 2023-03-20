@@ -7,7 +7,6 @@ import 'package:social_instagram/modules/posts/widgets/statefull/reaction_commen
 import '../../../providers/bloc_provider.dart';
 import '../../../themes/app_colors.dart';
 import '../../../themes/app_text_style.dart';
-import '../../profile/blocs/profile_bloc.dart';
 import '../../profile/widgets/stateless/item_block.dart';
 
 class CommentItemBubble extends StatefulWidget {
@@ -35,8 +34,6 @@ class _CommentItemBubbleState extends State<CommentItemBubble> {
   int? yourReact = 0;
 
   CommentBloc? get bloc => BlocProvider.of<CommentBloc>(context);
-
-  ProfileBloc? get profileBloc => BlocProvider.of<ProfileBloc>(context);
 
   @override
   void initState() {

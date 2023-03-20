@@ -37,7 +37,7 @@ class ListNotificationRxdartBloc extends PagingDataBehaviorBloc<Notify> {
 
   ListNotificationRxdartBloc() : _repo = ListNotificationPagingRepo() {
     _subReadNotify = AppEventBloc().listenEvent(
-      eventName: EventName.deletePost,
+      eventName: EventName.readNotifiCation,
       handler: _readNotification,
     );
   }
@@ -47,12 +47,14 @@ class ListNotificationRxdartBloc extends PagingDataBehaviorBloc<Notify> {
   }
 
   void _readNotification(BlocEvent event) {
-    final value = event.value;
+    if (event.value is! Notify) return;
 
-    if (value is Notify) {
-      dataSubject.sink
-          .add(dataValue!.where((element) => element.id != value.id).toList());
-    }
+    final notify = event.value as Notify;
+    dataValue!
+        .where((element) => element.id == notify.id)
+        .forEach((element) => element.isRead = 1);
+
+    dataSubject.add(dataValue!);
   }
 
   @override

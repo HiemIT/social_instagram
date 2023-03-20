@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
       _locale = locale;
     });
   }
- 
+
   @override
   void initState() {
     super.initState();

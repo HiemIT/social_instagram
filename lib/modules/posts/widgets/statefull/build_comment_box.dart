@@ -124,6 +124,7 @@ class _BuildCommentBoxState extends State<BuildCommentBox> {
     try {
       final res = await commentBloc!.writeCmt(_cmtCtrl.text);
       _cmtCtrl.clear();
+
       return res;
     } catch (e) {
       debugPrint('Cmt err');

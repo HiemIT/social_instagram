@@ -32,7 +32,7 @@ class Notify {
   final String? receiverType;
 
   @JsonKey(name: 'is_read')
-  final int? isRead;
+  int? isRead;
 
   @JsonKey(name: 'pushed')
   final int? pushed;
@@ -56,6 +56,9 @@ class Notify {
   });
 
   factory Notify.fromJson(Map<String, dynamic> json) => _$NotifyFromJson(json);
+
+  String get postId => payload!.accessory!.modelId ?? "";
+  String get uId => payload!.user!.id ?? "";
 
   Map<String, dynamic> toJson() => _$NotifyToJson(this);
 }

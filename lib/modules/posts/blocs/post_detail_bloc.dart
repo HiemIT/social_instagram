@@ -2,16 +2,15 @@ import 'package:rxdart/rxdart.dart';
 import 'package:social_instagram/common/blocs/app_even_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/repos/post_detail_repo.dart';
-import 'package:social_instagram/modules/profile/repos/profile_repo.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 
+import '../../profileUser/repos/profile_repo.dart  ';
 import 'delete_post_bloc.dart';
 
 class PostDetailBloc extends BlocBase {
   final String _postId;
   final deletePostBloc = DeletePostBloc();
   final profileRepo = ProfileRepo();
-
   // gắn _postCtrl với BehaviorSubject để có thể lắng nghe và gửi dữ liệu
   final _postCtrl = BehaviorSubject<Post>();
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:social_instagram/models/user.dart';
 import 'package:social_instagram/modules/notification/pages/notification_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
+import 'package:social_instagram/modules/profileUser/blocs/app_user_bloc.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uiData.dart';
 
-import '../../setting/pages/setting_page.dart';
+import '../../../providers/bloc_provider.dart';
+import '../../profile/pages/profile_user_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -14,17 +17,29 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  final List<Widget> _children = [
-    // const ListPostsPage(),
-    const ListPostPagingPage(),
-    const NotificationPage(),
-    const SettingPage(),
-  ];
-
   int _index = 0;
 
   @override
   Widget build(BuildContext context) {
+    final appUserBloc = BlocProvider.of<AppUserBloc>(context);
+    final List<Widget> _children = [
+      const ListPostPagingPage(),
+      StreamBuilder<User?>(
+          stream: appUserBloc!.userStream,
+          builder: (context, snapshot) {
+            // if snapshot null
+            if (!snapshot.hasData) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            // if snapshot has data
+            final user = snapshot.data;
+            return NotificationPage(uid: user!.id);
+          }),
+      const ProfileUserPage(),
+    ];
+
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: AppColors.blackRussian,
@@ -41,12 +56,6 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             label: "Home",
           ),
-          // BottomNavigationBarItem(
-          //   icon: ImageIcon(
-          //     AssetImage(UIData.iconStream),
-          //   ),
-          //   label: "Home 2",
-          // ),
           BottomNavigationBarItem(
             icon: ImageIcon(
               AssetImage(UIData.iconNotifications),

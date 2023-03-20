@@ -8,6 +8,7 @@ enum EventName {
   deletePost,
   likePostDetail,
   unLikePostDetail,
+  readNotifiCation
 }
 
 class BlocEvent {
