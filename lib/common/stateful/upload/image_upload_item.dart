@@ -43,4 +43,10 @@ class ImageUploadItem {
     controller = UploadController();
     cancelToken = CancelToken();
   }
+
+  ImageUploadItem.fromPicture(Picture picture) {
+    this.picture = picture;
+    _name = picture.cloudName;
+    _placeHolder = Image.network(picture.url!);
+  }
 }

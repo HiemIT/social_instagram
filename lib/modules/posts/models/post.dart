@@ -21,7 +21,7 @@ class Post {
   final String? title;
 
   @JsonKey(name: 'description', includeIfNull: false)
-  final String? description;
+  String? description;
 
   @JsonKey(name: 'images', includeIfNull: false)
   final List<Picture>? images;

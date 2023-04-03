@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\custom_dialog.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\browser_actions_context_menu_page.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\0b4ecea390d71e6666c0a293a7dcefa8\\browser-1.0.0\\res\\layout\\browser_actions_context_menu_page.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\browser_actions_context_menu_row.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\0b4ecea390d71e6666c0a293a7dcefa8\\browser-1.0.0\\res\\layout\\browser_actions_context_menu_row.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\notification_action.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\notification_action.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\notification_template_part_time.xml"
+    },
+    {
+        "merged": "E:\\learning_200lab\\social_instagram\\build\\firebase_auth\\intermediates\\res\\merged\\profile\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\6da98774515afcf67f37a084bac3b1cd\\core-1.6.0\\res\\layout\\notification_action_tombstone.xml"
+    }
+]

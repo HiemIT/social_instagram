@@ -1,13 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/modules/posts/blocs/list_posts_rxdart_bloc.dart';
-import 'package:social_instagram/modules/posts/widgets/stateless/activity_indicator.dart';
-import 'package:social_instagram/modules/posts/widgets/stateless/post_item.dart';
 import 'package:social_instagram/route/route_name.dart';
 
 import '../../../themes/app_colors.dart';
 import '../../../utils/uiData.dart';
 import '../models/post.dart';
+import '../widgets/stateless/activity_indicator.dart';
 
 class ListPostsPage extends StatefulWidget {
   const ListPostsPage({Key? key}) : super(key: key);

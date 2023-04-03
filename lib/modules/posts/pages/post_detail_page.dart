@@ -2,10 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:social_instagram/common/stateless/item_row.dart';
 import 'package:social_instagram/modules/posts/blocs/post_detail_bloc.dart';
-import 'package:social_instagram/modules/posts/widgets/grid_image.dart';
-import 'package:social_instagram/modules/posts/widgets/statefull/action_post.dart';
-import 'package:social_instagram/modules/posts/widgets/statefull/build_comment_box.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
+import 'package:social_instagram/route/route_name.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/string_utils.dart';
 
@@ -13,6 +11,9 @@ import '../../../themes/app_text_style.dart';
 import '../../comment/widgets/list_comment.dart';
 import '../../profile/widgets/stateless/item_block.dart';
 import '../models/post.dart';
+import '../widgets/grid_image.dart';
+import '../widgets/statefull/action_post.dart';
+import '../widgets/statefull/build_comment_box.dart';
 
 class PostDetailPage extends StatefulWidget {
   final Post post;
@@ -171,7 +172,11 @@ class _PostDetailPageState extends State<PostDetailPage> {
                                   'Chỉnh sữa bài viết',
                                   style: AppTextStyle.caption,
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, RouteName.updatePostPage,
+                                      arguments: post);
+                                },
                               ),
                             ),
                           ],

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:social_instagram/blocs/paging_data_bloc.dart';
 import 'package:social_instagram/modules/posts/models/post.dart';
+import 'package:social_instagram/modules/posts/models/post_update.dart';
 import 'package:social_instagram/modules/posts/repos/list_post_paging_repo.dart';
 import 'package:social_instagram/resource/paging_repo.dart';
 
@@ -36,6 +37,7 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
   Stream<List<Post>?> get postsStream => dataStream;
 
   late final StreamSubscription<BlocEvent> _subDeletePost;
+  late final StreamSubscription<BlocEvent> _subUpdatePost;
   late final StreamSubscription<BlocEvent> _onLikeAndUnLikePostSub;
 
   final ListPostPagingRepo _repo;
@@ -46,6 +48,8 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
       handler: _deletePost,
     );
 
+    _subUpdatePost = AppEventBloc()
+        .listenEvent(eventName: EventName.updatePost, handler: _updatePost);
     _onLikeAndUnLikePostSub = AppEventBloc().listenManyEvents(
       listEventName: [
         EventName.likePostDetail,
@@ -57,6 +61,22 @@ class ListPostsRxDartBloc extends PagingDataBehaviorBloc<Post> {
 
   Future<void> getPosts() async {
     return getData();
+  }
+
+  void _updatePost(BlocEvent evt) {
+    final value = evt.value;
+    if (value is PostUpdate) {
+      final oldPosts = dataValue ?? [];
+      final index = oldPosts.indexWhere((p) => p.id == value.id);
+      if (index == -1) {
+        return;
+      }
+      final post = oldPosts[index];
+      post..description = value.description;
+      // ..images = value.images;
+      oldPosts[index] = post;
+      dataSubject.sink.add(oldPosts.toList());
+    }
   }
 
   void _deletePost(BlocEvent evt) {

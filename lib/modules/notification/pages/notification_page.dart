@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:social_instagram/common/mixin/scroll_page_mixin.dart';
 import 'package:social_instagram/modules/notification/blocs/list_notifications_rxdart_bloc.dart';
 import 'package:social_instagram/modules/notification/widgets/statefull/card_notification.dart';
-import 'package:social_instagram/modules/posts/widgets/stateless/activity_indicator.dart';
 import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/themes/app_text_style.dart';
 
+import '../../posts/widgets/stateless/activity_indicator.dart';
 import "../models/notify.dart";
 
 class NotificationPage extends StatefulWidget {

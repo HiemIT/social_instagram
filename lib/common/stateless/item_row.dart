@@ -17,6 +17,7 @@ class ItemRow extends StatelessWidget {
     this.onTap,
     this.maxLines = 1,
     this.isCmt = false,
+    this.onNavigator,
   }) : super(key: key);
 
   final String? avatarUrl;
@@ -28,7 +29,7 @@ class ItemRow extends StatelessWidget {
   final Widget? bodyWidget;
   final Widget? rightWidget;
   final bool isCmt;
-
+  final Function? onNavigator;
   final VoidCallback? onTap;
 
   @override
@@ -86,14 +87,17 @@ class ItemRow extends StatelessWidget {
 
     if (title != null) {
       built = SizedBox(
-        width: MediaQuery.of(context).size.width - 108,
-        child: Text(
-          title!,
-          maxLines: maxLines,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.subtitle1!.copyWith(
-                color: Colors.white,
-              ),
+        child: InkWell(
+          onTap: () {},
+          child: Text(
+            title ?? "",
+            maxLines: maxLines,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                  color: Colors.white,
+                  fontWeight: isCmt ? FontWeight.w400 : FontWeight.w900,
+                ),
+          ),
         ),
       );
     }
@@ -120,7 +124,7 @@ class ItemRow extends StatelessWidget {
           subtitle!,
           style: Theme.of(context)
               .textTheme
-              .bodyText2!
+              .bodyMedium!
               .copyWith(color: AppColors.slate),
           maxLines: 1,
           overflow: TextOverflow.clip,
@@ -152,7 +156,7 @@ class ItemRow extends StatelessWidget {
           subtitle!,
           style: Theme.of(context)
               .textTheme
-              .bodyText2!
+              .bodyMedium!
               .copyWith(color: AppColors.white92),
         ),
       ),

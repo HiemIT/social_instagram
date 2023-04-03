@@ -11,6 +11,7 @@ import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/pages/create_post_page.dart';
 import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart';
 import 'package:social_instagram/modules/posts/pages/post_detail_page.dart';
+import 'package:social_instagram/modules/posts/pages/update_post_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 
@@ -95,6 +96,22 @@ class Routes {
           );
         }
         return _errorRoute();
+
+      case RouteName.updatePostPage:
+        final arguments = settings.arguments;
+        if (arguments is Post) {
+          return _buildRoute(
+            settings,
+            BlocProvider(
+              bloc: PostDetailBloc(arguments.id!)..getPost(),
+              child: UpdatePostPage(
+                post: arguments,
+              ),
+            ),
+          );
+        }
+        return _errorRoute();
+
       case RouteName.postDetailPage:
         // settings.arguments là một đối tượng để truyền vào một đối tượng từ một trang khác vào trang này (đối tượng này có thể là một đối tượng bất kỳ)
         List? arguments = settings.arguments as List;
