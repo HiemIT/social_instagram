@@ -48,8 +48,8 @@ class _ListPostsPagingPageState extends State<ListPostPagingPage>
         backgroundColor: AppColors.dark,
         strokeWidth: 1.0,
         onRefresh: () async {
-          return Future.delayed(Duration(seconds: 1), () {
-            _postsBloc.getPosts();
+          return Future.delayed(Duration(seconds: 1), () async {
+            await _postsBloc.getPosts();
           });
         },
         child: CustomScrollView(

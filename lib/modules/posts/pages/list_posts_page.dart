@@ -7,6 +7,7 @@ import '../../../themes/app_colors.dart';
 import '../../../utils/uiData.dart';
 import '../models/post.dart';
 import '../widgets/stateless/activity_indicator.dart';
+import '../widgets/stateless/post_item.dart';
 
 class ListPostsPage extends StatefulWidget {
   const ListPostsPage({Key? key}) : super(key: key);

@@ -7,7 +7,7 @@ import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uiData.dart';
 
 import '../../../providers/bloc_provider.dart';
-import '../../profileUser/pages/my_profile_page.dart';
+import '../../profileUser/pages/myProfilePage/my_profile_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);

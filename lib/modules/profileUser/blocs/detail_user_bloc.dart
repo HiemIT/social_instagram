@@ -12,7 +12,9 @@ class DetailUserBloc extends BlocBase {
 
   Stream<User?> get detailUserStream => _detailUserCtrl.stream;
 
-  DetailUserBloc(this._profileRepo);
+  DetailUserBloc(this._profileRepo) {
+    getDetailUser();
+  }
 
   Future<StateDetailUser> getDetailUser() async {
     try {

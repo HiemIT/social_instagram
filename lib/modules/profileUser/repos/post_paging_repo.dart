@@ -13,6 +13,6 @@ class PostUserPagingRepo with PagingRepo<Post> {
 
   @override
   String get url {
-    return '/users/$uid}/posts';
+    return '/users/$uid/posts';
   }
 }

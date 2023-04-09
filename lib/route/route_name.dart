@@ -5,7 +5,7 @@ class RouteName {
   static const String updatePostPage = '/update-post-page';
   static const String postDetailPage = '/post-detail-page';
   static const String postPage = '/post-page';
-  static const String profilePage = '/profile-page';
+  static const String myProfilePage = '/my-profile-page';
   static const String profileUserPage = '/profile-user-page';
   static const String editProfilePage = '/edit-profile-page';
   static const String editInfoProfilePage = '/edit-info-profile-page';

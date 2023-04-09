@@ -15,9 +15,9 @@ class ItemRow extends StatelessWidget {
     this.bodyWidget,
     this.rightWidget,
     this.onTap,
+    this.onNav,
     this.maxLines = 1,
     this.isCmt = false,
-    this.onNavigator,
   }) : super(key: key);
 
   final String? avatarUrl;
@@ -29,9 +29,9 @@ class ItemRow extends StatelessWidget {
   final Widget? bodyWidget;
   final Widget? rightWidget;
   final bool isCmt;
-  final Function? onNavigator;
-  final VoidCallback? onTap;
 
+  final VoidCallback? onTap;
+  final VoidCallback? onNav;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -87,15 +87,15 @@ class ItemRow extends StatelessWidget {
 
     if (title != null) {
       built = SizedBox(
+        width: MediaQuery.of(context).size.width - 108,
         child: InkWell(
-          onTap: () {},
+          onTap: onNav,
           child: Text(
-            title ?? "",
+            title!,
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.titleMedium!.copyWith(
                   color: Colors.white,
-                  fontWeight: isCmt ? FontWeight.w400 : FontWeight.w900,
                 ),
           ),
         ),

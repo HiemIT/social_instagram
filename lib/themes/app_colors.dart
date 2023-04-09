@@ -8,6 +8,8 @@ class AppColors {
   static const blueGrey = Color(0xff8e8e93);
   static const slate = Color(0xff4e586e);
   static const dark = Color(0xff242a37);
+  static const darkBlue = Color(0xff1E2432);
+
   static const deepSkyBlue = Color(0xff007aff);
   static const black60 = Color(0x99000000);
   static const veryLightPink = Color(0xfff3f3f3);
