@@ -362,7 +362,7 @@ class _ProfileUserPageState extends State<ProfileUserPage>
   }
 
   @override
-  void loadMoreData() => currentUser?.getPhotos();
+  void loadMoreData() => currentUser?.getPosts();
 
   @override
   ScrollController get scrollController => _scrollCtrl;

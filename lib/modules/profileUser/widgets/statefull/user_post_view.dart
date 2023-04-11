@@ -76,4 +76,10 @@ class _UserPostViewState extends State<UserPostView> {
       ),
     );
   }
+
+  @override
+  void loadMoreData() => postBloc?.getPosts();
+
+  @override
+  ScrollController get scrollController => _scrollCtrl;
 }

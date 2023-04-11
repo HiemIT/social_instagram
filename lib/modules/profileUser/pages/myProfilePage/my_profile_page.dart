@@ -93,6 +93,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
               ];
             },
             body: DefaultTabController(
+              animationDuration: const Duration(milliseconds: 200),
+              initialIndex: 0,
               length: tabs.length,
               child: Column(
                 children: <Widget>[

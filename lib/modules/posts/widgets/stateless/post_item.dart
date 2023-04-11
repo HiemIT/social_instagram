@@ -58,7 +58,8 @@ class PostItem extends StatelessWidget {
                             subtitle: StringUtils()
                                 .formatTimeAgo(post.createdAt as DateTime),
                             onNav: () {
-                              navigateToProfilePage(context, post.user);
+                              navigateToProfilePage(context, post.user,
+                                  id: uid);
                             },
                           ),
                         ),
@@ -77,10 +78,17 @@ class PostItem extends StatelessWidget {
   }
 
   // write function check isProfile is true or false, if true onNav is null
-  void navigateToProfilePage(BuildContext context, User? user) {
+  void navigateToProfilePage(BuildContext context, User? user, {String? id}) {
     if (isProfile) {
       return;
     }
+
+    // So sánh giữa user?id và id của người dùng hiện tại có bằng nhau không, nếu bằng nhau thì push sang RouteName.myProfilePage
+    if (user?.id == id) {
+      Navigator.pushNamed(context, RouteName.myProfilePage, arguments: id);
+      return;
+    }
+
     Navigator.pushNamed(context, RouteName.profileUserPage,
         arguments: user?.id ?? "0");
   }

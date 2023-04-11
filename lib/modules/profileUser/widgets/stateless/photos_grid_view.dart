@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../../common/mixin/scroll_page_mixin.dart';
 import '../../../posts/models/photo.dart';
 import '../../blocs/profile_user_bloc.dart';
 import 'custom_masonry_gird_photos.dart';
 
-class PhotosGridView extends StatelessWidget {
+class PhotosGridView extends StatefulWidget {
   const PhotosGridView({
     Key? key,
     required this.currentUser,
@@ -12,6 +13,20 @@ class PhotosGridView extends StatelessWidget {
 
   final ProfileUserBloc? currentUser;
 
+  @override
+  State<PhotosGridView> createState() => _PhotosGridViewState();
+}
+
+class _PhotosGridViewState extends State<PhotosGridView> with ScrollPageMixin {
+  late final _scrollCtrl = ScrollController();
+
+  @override
+  void dispose() {
+    _scrollCtrl.dispose();
+    super.dispose();
+  }
+
+  ProfileUserBloc? get currentUser => widget.currentUser;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<List<Photo>?>(
@@ -33,4 +48,10 @@ class PhotosGridView extends StatelessWidget {
       },
     );
   }
+
+  @override
+  void loadMoreData() => currentUser?.getPhotos();
+
+  @override
+  ScrollController get scrollController => _scrollCtrl;
 }
