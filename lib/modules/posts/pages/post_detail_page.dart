@@ -9,7 +9,7 @@ import 'package:social_instagram/utils/string_utils.dart';
 
 import '../../../themes/app_text_style.dart';
 import '../../comment/widgets/list_comment.dart';
-import '../../profile/widgets/stateless/item_block.dart';
+import '../../profileUser/widgets/stateless/item_block.dart';
 import '../models/post.dart';
 import '../widgets/grid_image.dart';
 import '../widgets/statefull/action_post.dart';

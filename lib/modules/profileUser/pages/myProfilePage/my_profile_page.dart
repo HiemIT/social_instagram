@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:social_instagram/common/stateless/user_profile_widget.dart';
-// import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
-import 'package:social_instagram/modules/profile/widgets/statefull/tab_photo_view.dart';
 import 'package:social_instagram/modules/profileUser/blocs/app_user_bloc.dart';
+// import 'package:social_instagram/modules/profile/blocs/profile_bloc.dart';
+import 'package:social_instagram/modules/profileUser/widgets/statefull/tab_posts_view.dart';
 import 'package:social_instagram/utils/uiData.dart';
 
 import '../../../../models/user.dart';
 import '../../../../providers/bloc_provider.dart';
 import '../../../../themes/app_colors.dart';
+import '../../widgets/statefull/tab_photos_view.dart';
 
 class MyProfilePage extends StatefulWidget {
   const MyProfilePage({Key? key}) : super(key: key);
@@ -23,7 +24,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
 
   // call profile bloc
   AppUserBloc? get profileBloc => BlocProvider.of<AppUserBloc>(context);
-  final AppUserBloc _appUserBloc = AppUserBloc();
   @override
   void initState() {
     super.initState();
@@ -44,7 +44,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: _appUserBloc.userStream,
+      stream: profileBloc?.userStream,
       builder: (context, snapshot) {
         if (snapshot.data == null) {
           return Container(
@@ -63,13 +63,13 @@ class _MyProfilePageState extends State<MyProfilePage> {
         if (user.totalPhotos != 0) {
           tabs.add({
             'title': UIData.iconCombinedShape,
-            'tab': TabPhotoView(),
+            'tab': TabPostsView(),
           });
         }
         if (user.totalPhotos != 0) {
           tabs.add({
             'title': UIData.iconPicture,
-            'tab': Container(),
+            'tab': TabPhotosView(),
           });
         }
         return Scaffold(

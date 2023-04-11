@@ -7,7 +7,7 @@ import 'package:social_instagram/modules/posts/widgets/statefull/reaction_commen
 import '../../../providers/bloc_provider.dart';
 import '../../../themes/app_colors.dart';
 import '../../../themes/app_text_style.dart';
-import '../../profile/widgets/stateless/item_block.dart';
+import '../../profileUser/widgets/stateless/item_block.dart';
 
 class CommentItemBubble extends StatefulWidget {
   final Comment? comment;

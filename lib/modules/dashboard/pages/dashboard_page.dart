@@ -7,7 +7,7 @@ import 'package:social_instagram/themes/app_colors.dart';
 import 'package:social_instagram/utils/uiData.dart';
 
 import '../../../providers/bloc_provider.dart';
-import '../../profileUser/pages/myProfilePage/my_profile_page.dart';
+import '../../settings/pages/setting_view.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -37,7 +37,7 @@ class _DashboardPageState extends State<DashboardPage> {
             final user = snapshot.data;
             return NotificationPage(uid: user!.id);
           }),
-      const MyProfilePage(),
+      const SettingView(),
     ];
 
     return Scaffold(

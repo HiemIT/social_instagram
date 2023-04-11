@@ -13,6 +13,7 @@ import 'package:social_instagram/modules/posts/pages/list_post_paging_page.dart'
 import 'package:social_instagram/modules/posts/pages/post_detail_page.dart';
 import 'package:social_instagram/modules/posts/pages/update_post_page.dart';
 import 'package:social_instagram/modules/profileUser/blocs/profile_user_bloc.dart';
+import 'package:social_instagram/modules/profileUser/pages/myProfilePage/my_profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 
@@ -142,6 +143,22 @@ class Routes {
             BlocProvider(
               bloc: ProfileUserBloc(userId),
               child: ProfileUserPage(),
+            ),
+          );
+        }
+        return _errorRoute();
+      case RouteName.myProfilePage:
+        var userId = settings.arguments;
+
+        if (userId is String) {
+          return _buildRoute(
+            settings,
+            BlocProvider(
+              bloc: AppUserBloc()..getUser(),
+              child: BlocProvider(
+                bloc: ProfileUserBloc(userId),
+                child: MyProfilePage(),
+              ),
             ),
           );
         }
