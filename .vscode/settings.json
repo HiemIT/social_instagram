@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["datimepost", "rxdart"]
+  "cSpell.words": ["datimepost", "rxdart"],
+  "cSpell.enableFiletypes": ["yaml"]
 }

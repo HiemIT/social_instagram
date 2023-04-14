@@ -4,7 +4,7 @@
             "outputFile": "E:\\learning_200lab\\social_instagram\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\3d31a4bbe1a53e945fa1a5449df51f02\\appcompat-1.0.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\96b9eb8985aa2ecccb17e18a1fde9fb6\\appcompat-1.5.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\c2ecfe66e5ee8b0e8d50abac161af719\\core-1.8.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\751ca0c2f7b1aeb729769c28056836d8\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
