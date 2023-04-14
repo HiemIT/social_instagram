@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:social_instagram/providers/api_provider.dart';
-import 'package:overlay_support/overlay_support.dart';
 
-mixin DownloadImgMixinStateful<T extends StatefulWidget> on State {
+mixin DownloadImgMixinStateful<T extends StatefulWidget> on State<T> {
   final _apiProvider = ApiProvider();
-  Future<void> downloadImg(String name, String url) async {
+  bool isFlag = false;
+  Future<bool> downloadImg(String name, String url) async {
     try {
       final response = await _apiProvider.get(
         url,
@@ -22,15 +22,13 @@ mixin DownloadImgMixinStateful<T extends StatefulWidget> on State {
         name: name,
       );
 
-      if (result != null) {
-        // user overlay
-        showSimpleNotification(
-          Text('Downloaded successfully'),
-          background: Colors.green,
-        );
+      if (result == null) {
+        return isFlag;
       }
+
+      return !isFlag;
     } catch (e) {
-      print(e);
+      return isFlag;
     }
   }
 }

@@ -23,3 +23,32 @@ extension AppContext on BuildContext {
 extension EnumX on Enum {
   String get nameString => name;
 }
+
+extension ScaffoldExtension on BuildContext {
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(this).showSnackBar(
+      SnackBar(
+        content: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.check_circle_outline,
+                color: Theme.of(this).colorScheme.secondary),
+            SizedBox(width: 10),
+            Text(message),
+          ],
+        ),
+        duration: const Duration(milliseconds: 1500),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 8.0,
+          vertical: 10.0,
+        ),
+        behavior: SnackBarBehavior.floating,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+        elevation: 1,
+        clipBehavior: Clip.antiAlias,
+      ),
+    );
+  }
+}
