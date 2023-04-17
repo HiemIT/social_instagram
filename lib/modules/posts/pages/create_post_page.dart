@@ -114,7 +114,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary:
+          backgroundColor:
               _completeUploadImage ? AppColors.deepSkyBlue : AppColors.grey,
         ),
         onPressed: _completeUploadImage ? createPost : null,
