@@ -14,9 +14,11 @@ import 'package:social_instagram/modules/posts/pages/post_detail_page.dart';
 import 'package:social_instagram/modules/posts/pages/update_post_page.dart';
 import 'package:social_instagram/modules/profileUser/blocs/profile_user_bloc.dart';
 import 'package:social_instagram/modules/profileUser/pages/myProfilePage/my_profile_page.dart';
+import 'package:social_instagram/modules/settings/pages/edit_profile_page.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 import 'package:social_instagram/route/route_name.dart';
 
+import '../models/user.dart';
 import '../modules/posts/blocs/list_posts_rxdart_bloc.dart';
 import '../modules/profileUser/blocs/app_user_bloc.dart';
 import '../modules/profileUser/pages/userPage/profile_user_page.dart';
@@ -99,7 +101,18 @@ class Routes {
           );
         }
         return _errorRoute();
-
+      case RouteName.editProfilePage:
+        final dataUser = settings.arguments;
+        if (dataUser is User) {
+          return _buildRoute(
+            settings,
+            BlocProvider(
+              bloc: AppUserBloc()..getUser(),
+              child: const EditProfilePage(),
+            ),
+          );
+        }
+        return _errorRoute();
       case RouteName.updatePostPage:
         final arguments = settings.arguments;
         if (arguments is Post) {

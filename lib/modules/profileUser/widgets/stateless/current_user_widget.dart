@@ -62,6 +62,10 @@ class _CurrentUserWidgetState extends State<CurrentUserWidget> {
                 child: StreamBuilder<User?>(
                     stream: profileBloc?.userStream,
                     builder: (context, snapshot) {
+                      // case snapshot no data
+                      if (!snapshot.hasData) {
+                        return const SizedBox.shrink();
+                      }
                       var user = snapshot.data;
                       print('user: $user');
                       return ExpansionTile(
