@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\learning_200lab\\social_instagram\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v20\\values-watch-v20.xml",
+            "outputFile": "com.example.social_instagram.app-mergeDebugResources-40:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\a4bc20b271bf122a53dde56b4da3d54f\\jetified-play-services-auth-20.5.0\\res\\values-watch-v20\\values.xml",
+                    "source": "/Users/yhiemkbuor/.gradle/caches/transforms-3/4550f9bc877fe36de43d3134600013a5/transformed/jetified-play-services-auth-20.6.0/res/values-watch-v20/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11",
                         "startColumns": "0,0,0,0,0,0,0,0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\96b9eb8985aa2ecccb17e18a1fde9fb6\\appcompat-1.5.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "/Users/yhiemkbuor/.gradle/caches/transforms-3/fbfe55cc85f234037926921239602d99/transformed/appcompat-1.0.0/res/values-watch-v20/values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\learning_200lab\\social_instagram\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "outputFile": "com.example.social_instagram.app-mergeDebugResources-40:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\96b9eb8985aa2ecccb17e18a1fde9fb6\\appcompat-1.5.1\\res\\values-v16\\values-v16.xml",
+                    "source": "/Users/yhiemkbuor/.gradle/caches/transforms-3/0ca4d405f88e00d87c9a883e8058b73c/transformed/core-1.10.1/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/yhiemkbuor/.gradle/caches/transforms-3/fbfe55cc85f234037926921239602d99/transformed/appcompat-1.0.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\hiemk\\.gradle\\caches\\transforms-2\\files-2.1\\751ca0c2f7b1aeb729769c28056836d8\\core-1.9.0\\res\\values-v16\\values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

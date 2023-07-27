@@ -5,7 +5,7 @@ import 'package:social_instagram/modules/posts/models/post.dart';
 import 'package:social_instagram/modules/posts/repos/post_detail_repo.dart';
 import 'package:social_instagram/providers/bloc_provider.dart';
 
-import '../../profileUser/repos/profile_repo.dart  ';
+import '../../profileUser/repos/profile_repo.dart';
 import '../models/post_update.dart';
 import 'delete_post_bloc.dart';
 

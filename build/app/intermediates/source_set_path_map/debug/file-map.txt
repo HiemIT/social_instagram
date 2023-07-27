@@ -1,0 +1,55 @@
+com.example.social_instagram.app-core-1.10.1-0 /Users/yhiemkbuor/.gradle/caches/transforms-3/0ca4d405f88e00d87c9a883e8058b73c/transformed/core-1.10.1/res
+com.example.social_instagram.app-lifecycle-viewmodel-2.6.1-1 /Users/yhiemkbuor/.gradle/caches/transforms-3/19dae0f21c6c0447d8e17ddf62181757/transformed/lifecycle-viewmodel-2.6.1/res
+com.example.social_instagram.app-jetified-profileinstaller-1.3.0-2 /Users/yhiemkbuor/.gradle/caches/transforms-3/2512829e15eab9d30eff7283b6df26d6/transformed/jetified-profileinstaller-1.3.0/res
+com.example.social_instagram.app-jetified-firebase-common-20.3.3-3 /Users/yhiemkbuor/.gradle/caches/transforms-3/309c7bb596b6fc4f503805564f7491e0/transformed/jetified-firebase-common-20.3.3/res
+com.example.social_instagram.app-browser-1.4.0-4 /Users/yhiemkbuor/.gradle/caches/transforms-3/3b25d27e0d117ba21f27b2348ae321a1/transformed/browser-1.4.0/res
+com.example.social_instagram.app-jetified-play-services-auth-20.6.0-5 /Users/yhiemkbuor/.gradle/caches/transforms-3/4550f9bc877fe36de43d3134600013a5/transformed/jetified-play-services-auth-20.6.0/res
+com.example.social_instagram.app-jetified-lifecycle-viewmodel-savedstate-2.6.1-6 /Users/yhiemkbuor/.gradle/caches/transforms-3/46c06cacc74005fd1d580f4f102912ec/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.1/res
+com.example.social_instagram.app-jetified-core-ktx-1.10.1-7 /Users/yhiemkbuor/.gradle/caches/transforms-3/578b54aef1bb7335438f2aae89f77fb2/transformed/jetified-core-ktx-1.10.1/res
+com.example.social_instagram.app-jetified-facebook-messenger-4.42.0-8 /Users/yhiemkbuor/.gradle/caches/transforms-3/5e2b0575e18471bbcb37120173ef434a/transformed/jetified-facebook-messenger-4.42.0/res
+com.example.social_instagram.app-lifecycle-runtime-2.6.1-9 /Users/yhiemkbuor/.gradle/caches/transforms-3/62dfaf089fccd2b0ac7a3c42ba20f610/transformed/lifecycle-runtime-2.6.1/res
+com.example.social_instagram.app-jetified-play-services-base-18.0.1-10 /Users/yhiemkbuor/.gradle/caches/transforms-3/663d502d31316ff9d36e2a04931d85a9/transformed/jetified-play-services-base-18.0.1/res
+com.example.social_instagram.app-lifecycle-livedata-core-2.6.1-11 /Users/yhiemkbuor/.gradle/caches/transforms-3/788eeb2e309ee370a13d0ba77ab4066c/transformed/lifecycle-livedata-core-2.6.1/res
+com.example.social_instagram.app-jetified-facebook-login-4.42.0-12 /Users/yhiemkbuor/.gradle/caches/transforms-3/7b88dc9934cdddf1c66a9fee08f71697/transformed/jetified-facebook-login-4.42.0/res
+com.example.social_instagram.app-jetified-glide-4.11.0-13 /Users/yhiemkbuor/.gradle/caches/transforms-3/7f7242c9e5158c1855ff0505757edea7/transformed/jetified-glide-4.11.0/res
+com.example.social_instagram.app-jetified-play-services-basement-18.2.0-14 /Users/yhiemkbuor/.gradle/caches/transforms-3/8617ac5fc8ffc8271a64fe30b153970d/transformed/jetified-play-services-basement-18.2.0/res
+com.example.social_instagram.app-core-runtime-2.2.0-15 /Users/yhiemkbuor/.gradle/caches/transforms-3/8868835b3b4c8f9d583c994ed31158c2/transformed/core-runtime-2.2.0/res
+com.example.social_instagram.app-jetified-facebook-common-4.42.0-16 /Users/yhiemkbuor/.gradle/caches/transforms-3/8e2c9559f544cdb5e4cf8b33d7d0a9b9/transformed/jetified-facebook-common-4.42.0/res
+com.example.social_instagram.app-jetified-facebook-share-4.42.0-17 /Users/yhiemkbuor/.gradle/caches/transforms-3/98767c05ea1c602162e662d40349300f/transformed/jetified-facebook-share-4.42.0/res
+com.example.social_instagram.app-lifecycle-livedata-2.6.1-18 /Users/yhiemkbuor/.gradle/caches/transforms-3/989308acf26007153757b53cb317cb67/transformed/lifecycle-livedata-2.6.1/res
+com.example.social_instagram.app-jetified-activity-1.7.2-19 /Users/yhiemkbuor/.gradle/caches/transforms-3/9f18aae1630426fa4608b0781c19fe8c/transformed/jetified-activity-1.7.2/res
+com.example.social_instagram.app-coordinatorlayout-1.0.0-20 /Users/yhiemkbuor/.gradle/caches/transforms-3/9feb63460138afa9e7c1a84f6493c76f/transformed/coordinatorlayout-1.0.0/res
+com.example.social_instagram.app-cardview-1.0.0-21 /Users/yhiemkbuor/.gradle/caches/transforms-3/a22392f6b045d388ad9c270c8701ee2a/transformed/cardview-1.0.0/res
+com.example.social_instagram.app-jetified-FishBun-0.11.2-22 /Users/yhiemkbuor/.gradle/caches/transforms-3/a57c45db5bd3eae8ff7e9bc098e4d266/transformed/jetified-FishBun-0.11.2/res
+com.example.social_instagram.app-jetified-savedstate-1.2.1-23 /Users/yhiemkbuor/.gradle/caches/transforms-3/a9335384bd9bc12f167eaa5847653703/transformed/jetified-savedstate-1.2.1/res
+com.example.social_instagram.app-jetified-window-java-1.0.0-beta04-24 /Users/yhiemkbuor/.gradle/caches/transforms-3/ac3f625918394b405b19a46cbfff1b2d/transformed/jetified-window-java-1.0.0-beta04/res
+com.example.social_instagram.app-transition-1.0.0-25 /Users/yhiemkbuor/.gradle/caches/transforms-3/ad15cf0603b7f8c856b8a7c863368db4/transformed/transition-1.0.0/res
+com.example.social_instagram.app-recyclerview-1.0.0-26 /Users/yhiemkbuor/.gradle/caches/transforms-3/b4bb9a1e8f8b7384b558358082de8621/transformed/recyclerview-1.0.0/res
+com.example.social_instagram.app-constraintlayout-1.1.3-27 /Users/yhiemkbuor/.gradle/caches/transforms-3/c4dc6f359af2130a0c4aea0230c2007a/transformed/constraintlayout-1.1.3/res
+com.example.social_instagram.app-jetified-startup-runtime-1.1.1-28 /Users/yhiemkbuor/.gradle/caches/transforms-3/e4c8a86a5cc4d200c89b7529f7ae7c65/transformed/jetified-startup-runtime-1.1.1/res
+com.example.social_instagram.app-jetified-annotation-experimental-1.3.0-29 /Users/yhiemkbuor/.gradle/caches/transforms-3/e5fb003fde224daedb1988a50792237f/transformed/jetified-annotation-experimental-1.3.0/res
+com.example.social_instagram.app-media-1.0.0-30 /Users/yhiemkbuor/.gradle/caches/transforms-3/e87bdc27ba9953cf85e121aa722e2d71/transformed/media-1.0.0/res
+com.example.social_instagram.app-jetified-window-1.0.0-beta04-31 /Users/yhiemkbuor/.gradle/caches/transforms-3/ee77fe50510984aee8afb61f803e6e9e/transformed/jetified-window-1.0.0-beta04/res
+com.example.social_instagram.app-material-1.0.0-32 /Users/yhiemkbuor/.gradle/caches/transforms-3/f45e45e406f2c9b00d081acf6f751b18/transformed/material-1.0.0/res
+com.example.social_instagram.app-appcompat-1.0.0-33 /Users/yhiemkbuor/.gradle/caches/transforms-3/fbfe55cc85f234037926921239602d99/transformed/appcompat-1.0.0/res
+com.example.social_instagram.app-debug-34 /Volumes/MACOS D/Flutter/project/social_instagram/android/app/src/debug/res
+com.example.social_instagram.app-main-35 /Volumes/MACOS D/Flutter/project/social_instagram/android/app/src/main/res
+com.example.social_instagram.app-google-services-36 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/generated/res/google-services/debug
+com.example.social_instagram.app-pngs-37 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/generated/res/pngs/debug
+com.example.social_instagram.app-resValues-38 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/generated/res/resValues/debug
+com.example.social_instagram.app-rs-39 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/generated/res/rs/debug
+com.example.social_instagram.app-mergeDebugResources-40 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/intermediates/incremental/debug/mergeDebugResources/merged.dir
+com.example.social_instagram.app-mergeDebugResources-41 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/intermediates/incremental/debug/mergeDebugResources/stripped.dir
+com.example.social_instagram.app-merged_res-42 /Volumes/MACOS D/Flutter/project/social_instagram/build/app/intermediates/merged_res/debug
+com.example.social_instagram.app-packaged_res-43 /Volumes/MACOS D/Flutter/project/social_instagram/build/firebase_auth/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-44 /Volumes/MACOS D/Flutter/project/social_instagram/build/firebase_core/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-45 /Volumes/MACOS D/Flutter/project/social_instagram/build/flutter_plugin_android_lifecycle/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-46 /Volumes/MACOS D/Flutter/project/social_instagram/build/google_sign_in_android/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-47 /Volumes/MACOS D/Flutter/project/social_instagram/build/image_gallery_saver/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-48 /Volumes/MACOS D/Flutter/project/social_instagram/build/image_picker_android/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-49 /Volumes/MACOS D/Flutter/project/social_instagram/build/multi_image_picker2/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-50 /Volumes/MACOS D/Flutter/project/social_instagram/build/path_provider_android/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-51 /Volumes/MACOS D/Flutter/project/social_instagram/build/permission_handler_android/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-52 /Volumes/MACOS D/Flutter/project/social_instagram/build/shared_preferences_android/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-53 /Volumes/MACOS D/Flutter/project/social_instagram/build/sqflite/intermediates/packaged_res/debug
+com.example.social_instagram.app-packaged_res-54 /Volumes/MACOS D/Flutter/project/social_instagram/build/url_launcher_android/intermediates/packaged_res/debug

@@ -1,4 +1,7 @@
 {
   "cSpell.words": ["datimepost", "rxdart"],
-  "cSpell.enableFiletypes": ["yaml"]
+  "cSpell.enableFiletypes": [
+    "yaml"
+  ],
+  "cmake.sourceDirectory": "/Volumes/MACOS D/Flutter/project/social_instagram/linux"
 }
